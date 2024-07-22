@@ -21,8 +21,4 @@ import CLGStructure
 import FuncInformation
 import StrucInformation
 
-#from CRFE._crfe import CRFE   
-sys.path.insert(0, "../") 
-from CRFE._crfe import CRFE 
-
 ```
