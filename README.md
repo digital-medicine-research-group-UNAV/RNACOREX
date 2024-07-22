@@ -1,1 +1,1 @@
-# miRNA-CLG
+# miRNetClassifier
