@@ -72,6 +72,14 @@ mrnc.predict_proba(X_test)
 
 ```python
 
+# Structure search
+
+mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
+
+```
+
+```python
+
 # Coregulation network
 
 mrnc.show_connections()
