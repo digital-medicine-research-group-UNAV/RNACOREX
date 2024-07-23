@@ -25,14 +25,22 @@ import StrucInformation
 
 ```python
 
+# Load the dataset.
+
 data_brca = pd.read_csv('SampleData/SampleDataBRCA.csv', sep = ',', index_col = 0)
+
+# Select expression data (X) and the class (y)
 
 X = data_brca.drop('classvalues', axis = 1)
 y = data_brca['classvalues']
 
+# Split the dataset in train and test.
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
 
 ```
+
+miRNetClassifier uses the scikit-learn fit-predict schema. Before fitting, the model has to be initialized with `initialize_model()`, the functional information calculated with `initialize_model()` and the interaction ranking constructed with `interaction_ranking()`.
 
 ```python
 
