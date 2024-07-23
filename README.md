@@ -23,4 +23,15 @@ import StrucInformation
 
 ```
 
+```python
+
+mrnc = miRNetClassifier.MRNC()
+
+mrnc.initialize_model(X_train, y_train)
+mrnc.compute_functional(X_train, y_train)
+mrnc.interaction_ranking()
+mrnc.fit(X_train, y_train)
+
+```
+
 ## References
