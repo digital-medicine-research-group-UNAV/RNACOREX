@@ -40,7 +40,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 
 ```
 
-miRNetClassifier uses the scikit-learn fit-predict schema. Before fitting, the model has to be initialized with `initialize_model()`, the functional information calculated with `initialize_model()` and the interaction ranking constructed with `interaction_ranking()`.
+The `MRNC` estimator has two parameters `n_con` and `precision`. This two parameters will define the number of interactions of the model and the precision in the functional information estimation process.
+
+As a first step, the model has to be initialized with `initialize_model()`, the functional information calculated with `initialize_model()` and the interaction ranking constructed with `interaction_ranking()`.
 
 ```python
 
