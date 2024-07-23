@@ -25,6 +25,17 @@ import StrucInformation
 
 ```python
 
+data_brca = pd.read_csv('SampleData/SampleDataBRCA.csv', sep = ',', index_col = 0)
+
+X = data_brca.drop('classvalues', axis = 1)
+y = data_brca['classvalues']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
+
+```
+
+```python
+
 # Initialize estimator with default parameters (precision = 10, n_con = 20)
 
 mrnc = miRNetClassifier.MRNC()
