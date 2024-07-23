@@ -25,6 +25,8 @@ import StrucInformation
 
 ```python
 
+# Initialize estimator with default parameters (precision = 10, n_con = 20)
+
 mrnc = miRNetClassifier.MRNC()
 
 # Initialize model and calculate structural information
