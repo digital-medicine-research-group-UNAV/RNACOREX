@@ -27,9 +27,20 @@ import StrucInformation
 
 mrnc = miRNetClassifier.MRNC()
 
+# Initialize model and calculate structural information
+
 mrnc.initialize_model(X_train, y_train)
+
+# Calculate functional information
+
 mrnc.compute_functional(X_train, y_train)
+
+# Compute the interaction ranking
+
 mrnc.interaction_ranking()
+
+# Fit model
+
 mrnc.fit(X_train, y_train)
 
 ```
