@@ -52,9 +52,29 @@ mrnc.compute_functional(X_train, y_train)
 
 mrnc.interaction_ranking()
 
+```
+
+```python
+
 # Fit model
 
 mrnc.fit(X_train, y_train)
+
+# Predict
+
+mrnc.predict(X_test)
+
+# Predict proba
+
+mrnc.predict_proba(X_test)
+
+```
+
+```python
+
+# Coregulation network
+
+mrnc.show_connections()
 
 ```
 
