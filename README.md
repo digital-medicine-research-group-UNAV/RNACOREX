@@ -64,6 +64,8 @@ mrnc.interaction_ranking()
 
 ```
 
+Once the model is initialized it could be fitted.
+
 ```python
 
 # Fit model
