@@ -96,7 +96,7 @@ mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
 
 ```python
 
-# Coregulation network
+# Coregulation network.
 
 mrnc.show_connections()
 
@@ -128,7 +128,13 @@ print(mrnc.genes_)
 
 print(mrnc.clgc_)
 
+```
+
+```python
+
 # The interaction ranking, with the micro-gen connection, the structural information score and the functional information score.
+
+mrnc.get_ranking()
 
 print(mrnc.conexiones_)
 
