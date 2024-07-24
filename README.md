@@ -104,19 +104,31 @@ mrnc.show_connections()
 
 ```python
 
+# Show the parameters of the model (nº of connections and precision).
+
 print(mrnc.get_params())
+
+# Show the structural information.
 
 print(mrnc.structural_information)
 
+# Show the functional information.
+
 print(mrnc.functional_information)
+
+# The considered micros.
 
 print(mrnc.micros)
 
+# The considered genes.
+
 print(mrnc.genes)
+
+# The parameters of the model.
 
 print(mrnc.clgc_)
 
-# Shows the interaction ranking, with the micro-gen connection, the structural information score and the functional information score.
+# The interaction ranking, with the micro-gen connection, the structural information score and the functional information score.
 
 print(mrnc.conexiones_)
 
