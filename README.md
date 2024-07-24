@@ -130,6 +130,8 @@ print(mrnc.clgc_)
 
 ```
 
+Con `get_ranking` se obtiene un dataframe con el listado ordenado de interacciones y sus scores.
+
 ```python
 
 # The interaction ranking, with the micro-gen connection, the structural information score and the functional information score.
