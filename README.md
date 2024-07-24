@@ -130,7 +130,8 @@ print(mrnc.clgc_)
 
 ```
 
-Con `get_ranking` se obtiene un dataframe con el listado ordenado de interacciones y sus scores.
+With `get_ranking` a dataframe with the ordered list of interactions and their scores is obtained.
+The ranking is saved in the `connections_` atribute.
 
 ```python
 
@@ -138,7 +139,7 @@ Con `get_ranking` se obtiene un dataframe con el listado ordenado de interaccion
 
 mrnc.get_ranking()
 
-print(mrnc.conexiones_)
+print(mrnc.connections_)
 
 ```
 
