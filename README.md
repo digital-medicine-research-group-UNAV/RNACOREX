@@ -116,7 +116,7 @@ print(mrnc.genes)
 
 print(mrnc.clgc_)
 
-# Muestra el ranking de conexiones, con el micro y el gen que une cada interacción, el valor de la información estructural y el valor de la información funcional.
+# Shows the interaction ranking, with the micro-gen connection, the structural information score and the functional information score.
 
 print(mrnc.conexiones_)
 
