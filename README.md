@@ -124,7 +124,7 @@ print(mrnc.conexiones_)
 
 mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
 
-mrnc.structure_search(X_train, y_train, 100)
+mrnc.structure_search(X_train, y_train, max_models = 100)
 
 ```
 
