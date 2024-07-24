@@ -80,6 +80,10 @@ mrnc.predict(X_test)
 
 mrnc.predict_proba(X_test)
 
+# Score
+
+mrnc.score(X_test, y_test)
+
 ```
 
 ```python
@@ -95,6 +99,34 @@ mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
 # Coregulation network
 
 mrnc.show_connections()
+
+```
+
+```python
+
+# Coregulation network
+
+print(mrnc.get_params())
+
+print(mrnc.structural_information)
+
+print(mrnc.functional_information)
+
+print(mrnc.micros)
+
+print(mrnc.genes)
+
+print(mrnc.clgc_)
+
+print(mrnc.conexiones_)
+
+```
+
+```python
+
+mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
+
+mrnc.structure_search(X_train, y_train, 100)
 
 ```
 
