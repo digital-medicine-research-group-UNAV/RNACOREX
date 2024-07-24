@@ -64,7 +64,7 @@ mrnc.interaction_ranking()
 
 ```
 
-Once the model is initialized it could be fitted.
+Once the model is initialized it could be fitted and used for predictions.
 
 ```python
 
