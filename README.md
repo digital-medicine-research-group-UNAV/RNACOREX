@@ -96,6 +96,8 @@ mrnc.show_connections()
 
 ```
 
+With the model fitted, several atributes of the estimator could be accessed.
+
 ```python
 
 # Show the parameters of the model (nº of connections and precision).
