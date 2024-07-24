@@ -104,8 +104,6 @@ mrnc.show_connections()
 
 ```python
 
-# Coregulation network
-
 print(mrnc.get_params())
 
 print(mrnc.structural_information)
