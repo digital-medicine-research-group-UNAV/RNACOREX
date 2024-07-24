@@ -86,13 +86,7 @@ mrnc.score(X_test, y_test)
 
 ```
 
-```python
-
-# Structure search
-
-mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
-
-```
+With `show_connections()` the coregulation network is displayed. The displayed network will have the number of interactions defined in the `n_con` atribute of the estimator.
 
 ```python
 
