@@ -110,19 +110,19 @@ print(mrnc.get_params())
 
 # Show the structural information.
 
-print(mrnc.structural_information)
+print(mrnc.structural_information_)
 
 # Show the functional information.
 
-print(mrnc.functional_information)
+print(mrnc.functional_information_)
 
 # The considered micros.
 
-print(mrnc.micros)
+print(mrnc.micros_)
 
 # The considered genes.
 
-print(mrnc.genes)
+print(mrnc.genes_)
 
 # The parameters of the model.
 
