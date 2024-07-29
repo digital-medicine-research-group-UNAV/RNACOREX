@@ -109,6 +109,10 @@ mrnc.show_connections()
 
 ```
 
+The fit-predict framework executes the model from an static point of view, with a specific number of interaction defined by the udes.
+
+The `structure_search()` function allows to develop networks with 1 to *max_models* interactions and obtain its metrics. A test sample can be specified or not depending on user requirements.
+
 ```python
 
 mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
