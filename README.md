@@ -17,11 +17,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 import miRNetClassifier
-import CLGStructure
-import FuncInformation
-import StrucInformation
 
 ```
+
+Load the dataset *SampleData/SampleDataBRCA* and prepare the data. More example datasets could be found in *SampleData* folder.
 
 ```python
 
