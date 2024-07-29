@@ -63,45 +63,9 @@ mrnc.interaction_ranking()
 
 ```
 
-Once the model is initialized it could be fitted and used for predictions.
+After executing this three functions, several atributes could be accessed.
 
 ```python
-
-# Fit model
-
-mrnc.fit(X_train, y_train)
-
-# Predict
-
-mrnc.predict(X_test)
-
-# Predict proba
-
-mrnc.predict_proba(X_test)
-
-# Score
-
-mrnc.score(X_test, y_test)
-
-```
-
-With `show_connections()` the coregulation network is displayed. The displayed network will have the number of interactions defined in the `n_con` atribute of the estimator.
-
-```python
-
-# Coregulation network.
-
-mrnc.show_connections()
-
-```
-
-With the model fitted, several atributes of the estimator could be accessed.
-
-```python
-
-# Show the parameters of the model (nº of connections and precision).
-
-print(mrnc.get_params())
 
 # Show the structural information.
 
@@ -119,22 +83,29 @@ print(mrnc.micros_)
 
 print(mrnc.genes_)
 
-# The parameters of the model.
+# The ordered list of interactions with their scores.
+
+print(mrnc.connections_)
+
+```
+
+Once the model is initialized it could be fitted and used for predictions. The parameters of the model could be obtained through the `clgc_` atribute.
+
+```python
+
+# Obtain the parameters of the model
 
 print(mrnc.clgc_)
 
 ```
 
-With `get_ranking` a dataframe with the ordered list of interactions and their scores is obtained.
-The ranking is saved in the `connections_` atribute.
+With `show_connections()` the coregulation network is displayed. The displayed network will have the number of interactions defined in the `n_con` atribute of the estimator.
 
 ```python
 
-# The interaction ranking, with the micro-gen connection, the structural information score and the functional information score.
+# Coregulation network.
 
-mrnc.get_ranking()
-
-print(mrnc.connections_)
+mrnc.show_connections()
 
 ```
 
