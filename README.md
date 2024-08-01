@@ -93,6 +93,18 @@ Once the model is initialized it could be fitted and used for predictions. The p
 
 ```python
 
+# Fit the model
+
+mrnc.fit(X_train, y_train)
+
+# Predict
+
+mrnc.predict(X_test)
+
+# Predict proba
+
+mrnc.predict_proba(X_test)
+
 # Obtain the parameters of the model
 
 print(mrnc.clgc_)
