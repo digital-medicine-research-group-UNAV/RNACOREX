@@ -55,7 +55,7 @@ mrnc.initialize_model(X_train, y_train)
 
 # Calculate functional information
 
-mrnc.compute_functional(X_train, y_train)
+mrnc.compute_functional()
 
 # Compute the interaction ranking
 
@@ -95,7 +95,7 @@ Once the model is initialized it could be fitted and used for predictions. The p
 
 # Fit the model
 
-mrnc.fit(X_train, y_train)
+mrnc.fit()
 
 # Predict
 
