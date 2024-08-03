@@ -91,6 +91,8 @@ print(mrnc.connections_)
 
 Once the model is initialized it could be fitted and used for predictions. The parameters of the model could be obtained through the `clgc_` atribute.
 
+The fit() function does not need X_train, y_train as these are computed by initialize_model(). It does make not sense implementing fit() with other X_train, y_train sets other than the ones calculated with initialize_model().
+
 ```python
 
 # Fit the model
