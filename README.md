@@ -139,11 +139,11 @@ The `structure_search()` function allows to develop networks with 1 to *max_mode
 
 ```python
 
-# When specifying train and test sets both are filtered with the selected micros and genes in `initialize_model()`.
+# Sets are filtered with the selected micros and genes in `initialize_model()`.
 
 mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
 
-mrnc.structure_search(X_train, y_train, max_models = 100)
+mrnc.structure_search(X, y, max_models = 100)
 
 ```
 
