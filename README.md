@@ -49,7 +49,7 @@ As a first step, the model has to be initialized with `initialize_model()`, the 
 
 mrnc = miRNetClassifier.MRNC()
 
-# Initialize model and calculate structural information
+# Initialize model, filter the train set and calculate structural information.
 
 mrnc.initialize_model(X_train, y_train)
 
