@@ -113,6 +113,16 @@ print(mrnc.clgc_)
 
 ```
 
+Instead of doing it step by step, all the process could be done with the `fit_complete()` function.
+
+```python
+
+# Initialize and fit the model
+
+mrnc.fit_complete(X_train, y_train)
+
+```
+
 With `show_connections()` the coregulation network is displayed. The displayed network will have the number of interactions defined in the `n_con` atribute of the estimator.
 
 ```python
