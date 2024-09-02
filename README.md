@@ -75,11 +75,11 @@ print(mrnc.structural_information_)
 
 print(mrnc.functional_information_)
 
-# The considered micros.
+# The considered micros for the CLG model.
 
 print(mrnc.micros_)
 
-# The considered genes.
+# The considered genes for the CLG model.
 
 print(mrnc.genes_)
 
