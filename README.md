@@ -41,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 
 The `MRNC` estimator has two parameters: `n_con` and `precision`. This two parameters will define the number of interactions of the model and the precision in the functional information estimation process.
 
-As a first step, the model has to be initialized with `initialize_model()`, the functional information calculated with `compute_functional()` and the interaction ranking constructed with `interaction_ranking()`. 
+The most simple usage of the package is reduced to fit the model to data with `fit()` and show the related network with `get_network()`. By default, the model will be fitted and the network represented with the default number of interactions.
 
 ```python
 
@@ -49,21 +49,17 @@ As a first step, the model has to be initialized with `initialize_model()`, the 
 
 mrnc = miRNetClassifier.MRNC()
 
-# Initialize model, filter the train set and calculate structural information.
+# Fit the model.
 
-mrnc.initialize_model(X_train, y_train)
+mrnc.fit(X_train, y_train)
 
-# Calculate functional information
+# Display the coregulation network.
 
-mrnc.compute_functional()
-
-# Compute the interaction ranking
-
-mrnc.interaction_ranking()
+mrnc.get_network()
 
 ```
 
-After executing this three functions, several atributes could be accessed.
+Once the model is fitted, several atributes could be accessed.
 
 ```python
 
@@ -75,11 +71,11 @@ print(mrnc.structural_information_)
 
 print(mrnc.functional_information_)
 
-# The considered micros for the CLG model.
+# The included micros in the CLG model.
 
 print(mrnc.micros_)
 
-# The considered genes for the CLG model.
+# The included genes in the CLG model.
 
 print(mrnc.genes_)
 
@@ -87,17 +83,15 @@ print(mrnc.genes_)
 
 print(mrnc.connections_)
 
+# The parameters of the model.
+
+print(mrnc.clgc_)
+
 ```
 
-Once the model is initialized it could be fitted and used for predictions. The parameters of the model could be obtained through the `clgc_` atribute.
-
-The `fit()` function does not need `X_train`, `y_train` as these are computed by `initialize_model()`. It does make not sense implementing `fit_single()` with other `X_train`, `y_train` sets other than the ones calculated with `initialize_model()`.
+Once the model is fitted it could be used for predictions.
 
 ```python
-
-# Fit the model
-
-mrnc.fit_single()
 
 # Predict
 
@@ -107,43 +101,55 @@ mrnc.predict(X_test)
 
 mrnc.predict_proba(X_test)
 
-# Obtain the parameters of the model
-
-print(mrnc.clgc_)
-
 ```
 
-Instead of doing it step by step, all the process could be done with the `fit()` function.
+Instead of doing all the fitting process at one step, it can be done in more steps, allowing a bigger personalization of the model.
 
 ```python
 
-# Initialize and fit the model
+# Initialize estimator with default parameters (precision = 10, n_con = 20)
 
-mrnc.fit(X_train, y_train)
+mrnc = miRNetClassifier.MRNC()
 
-```
+# Initialize model and calculate structural information
 
-With `show_connections()` the coregulation network is displayed. The displayed network will have the number of interactions defined in the `n_con` atribute of the estimator.
+mrnc.initialize_model(X_train, y_train)
 
-```python
+# Calculate functional information. compute_functional() allows to use different X_train and y_train than the ones used for initializing the model.
+# This permits, for example, fitting models with different train and test sets without having to initialize the model again.
+# The used X_train and y_train sets should have the same variables (microRNA and mRNA) as the ones used in initialize_model().
 
-# Coregulation network.
+mrnc.compute_functional()
 
-mrnc.show_connections()
+# Fit the model
+
+mrnc.fit_single()
+
+# Get the network
+
+mrnc.get_network()
 
 ```
 
 The fit-predict framework executes the model from an static point of view, with a specific number of interaction defined by the user.
 
-The `structure_search()` function allows to develop networks with 1 to *max_models* interactions and obtain its metrics. The interaction ranking have to be calculated beforehand and will define the `X_train` and `y_train` sets used. Test samples can be specified or not depending on user requirements.
+The `structure_search()` function allows to develop networks with 1 to *max_models* interactions and obtain its metrics. The model has to be initialized and the functional information computed beforehand. Train and test samples can be specified or not depending on user requirements. If train sets are not specified the ones included in `initialize_model()` are used. If train sets are specified the variables have to coincide with the ones in `initialize_model()`.
 
 ```python
 
-# X_train and y_train are set in `initialize_model()`.
+# Search for optimal structure with personalized train and test sets.
+
+mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
+
+# Use only personalized test sets.
 
 mrnc.structure_search(X_test, y_test, 100)
 
-mrnc.structure_search()
+# Use default train sets and no test set.
+
+mrnc.structure_search(100)
+
+print(mrnc.structure_metrics_)
 
 ```
 
