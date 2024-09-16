@@ -89,7 +89,7 @@ print(mrnc.clgc_)
 
 ```
 
-Once the model is fitted it could be used for predictions.
+The fitted model can also be used for predictions.
 
 ```python
 
