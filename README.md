@@ -123,7 +123,7 @@ mrnc.compute_functional()
 
 # Fit the model
 
-mrnc.fit_single()
+mrnc.fit_only()
 
 # Get the network
 
