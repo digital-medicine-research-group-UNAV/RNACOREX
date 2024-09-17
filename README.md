@@ -57,6 +57,8 @@ mrnc.get_network()
 
 ```
 
+![alt text](output.png)
+
 Once the model is fitted, several atributes could be accessed.
 
 ```python
