@@ -2,8 +2,6 @@
 
 miRNetClassifier is a package that extracts the post-transcriptional coregulation network associated to a specific phenotype. The package filters the input miRNAs and mRNAs using well-known databases such as TargetScan, DIANA and miRTarBase and develops Conditional Linear Gaussian Classifiers (CLGs) to identify the most relevant miRNA-mRNA interactions and classify new samples.
 
-## Requirements
-
 ## Quickstart
 
 Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *Examples* folder for additional examples.
