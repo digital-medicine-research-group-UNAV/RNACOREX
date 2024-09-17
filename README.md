@@ -56,6 +56,7 @@ mrnc.fit(X_train, y_train)
 mrnc.get_network()
 
 ```
+The resulting network:
 
 <img src="output.png" alt="Alt Text" width="600" height="600">
 
