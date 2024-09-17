@@ -152,5 +152,3 @@ mrnc.structure_search(100)
 print(mrnc.structure_metrics_)
 
 ```
-
-## References
