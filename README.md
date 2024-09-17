@@ -57,8 +57,7 @@ mrnc.get_network()
 
 ```
 
-![alt text](output.png)
-<img src="output.png" alt="Alt Text" width="300" height="200">
+<img src="output.png" alt="Alt Text" width="600" height="600">
 
 Once the model is fitted, several atributes could be accessed.
 
