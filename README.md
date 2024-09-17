@@ -6,7 +6,7 @@ miRNetClassifier is a package that extracts the post-transcriptional coregulatio
 
 ## Quickstart
 
-Let start with a basic example. This example is coded in *Examples/quickstart_1.py*. See *Examples* folder for additional examples.
+Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *Examples* folder for additional examples.
 
 Firstly, we will import the required modules.
 
