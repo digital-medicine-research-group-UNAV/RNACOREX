@@ -246,6 +246,71 @@ def structure_search(X_train, y_train, X_test = None, y_test = None, max_models 
         return result
 
 
+
+def order_interactions(s_mat, f_mat):
+
+    """
+
+    Orders the interactions of the network according to their structural and functional information.
+    
+    Args:
+    
+        s_mat (np.ndarray): Structural information matrix of the network.
+        f_mat (np.ndarray): Functional information matrix of the network.
+    
+    Returns:
+    
+        unique (list): List with the interactions ordered by importance.
+        
+    """
+
+    
+    n_nodos = s_mat.shape[0]
+
+    mats = [s_mat, f_mat]
+
+    connects_s = []
+    connects_f = []
+
+    loop = 0
+
+    for mat in mats:
+
+        nodos = np.nonzero(mat)
+        row_counts = np.count_nonzero(s_mat, axis=1)
+        col_counts = np.count_nonzero(s_mat, axis=0)
+
+        n = len(nodos[0])
+
+        for i in range(n):
+            nodo0 = nodos[0][i]
+            nodo1 = nodos[1][i]
+            vecinos = row_counts[nodo0] + col_counts[nodo1]
+
+            if loop == 0:
+                connects_s.append([nodo0, nodo1, mat[nodo0, nodo1], vecinos])
+
+            else:
+                connects_f.append([nodo0, nodo1, mat[nodo0, nodo1], vecinos])
+
+        loop = loop + 1
+
+    connects_s.sort(key=lambda x: (-x[2], x[3]))
+    connects_f.sort(key=lambda x: -x[2])
+
+    combinado = [item for pair in zip(connects_s, connects_f) for item in pair]
+    unique = []
+
+    combi = [combined[0:2] for combined in combinado]
+
+    for con in combi:
+        if con not in unique:
+            unique.append([con[0], con[1], s_mat[con[0], con[1]], f_mat[con[0], con[1]]])
+
+    return unique
+
+
+
 def pl_plemclg(dataset, classpl, dag):
 
     """
