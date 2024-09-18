@@ -152,6 +152,8 @@ mrnc.structure_search(X_test, y_test, 100)
 
 mrnc.structure_search(100)
 
+# Get metrics.
+
 print(mrnc.structure_metrics_)
 
 ```
