@@ -1,1 +1,19 @@
+--> 'TCGA Raw Data' contains the original data extracted from GDC without preprocessing.
+
+--> In 'DEG R' files for Differential Gene Expression, R scripts for DEG and differentially expressed genes are saved.
+
+--> In 'Clean Data' the final database after preprocessing and DEG are saved.
+
+
+
+----> 'preprocessing_1.py' runs the first part of the preprocessing process and creates 'data_deg_bbdd.csv' in 'DEG R' folder.
+
+----> 'edgeR_DEG_bbdd.R' scripts executes the DEG of the specific 'data_deg_bbdd.csv' database. 'master.R' executes DEG for all databases. Generates the list of DEG genes for each database in 'deg_genes_bbdd.csv' file in 'DEG R' folder.
+
+----> 'preprocessing_2.py' runs the second part of the preprocessing process using the DEG genes. Generates the final database and saves it in 'Clean Data' folder.
+
+----> 'plos_code.py' executes the script for building networks and extract metrics using miRNetClassifier.
+
+
+
 
