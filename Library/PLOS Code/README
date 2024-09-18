@@ -4,6 +4,8 @@
 
 --> In 'Clean Data' the final database after preprocessing and DEG are saved.
 
+--> 'PLOS Results' contains the main outputs paper code.
+
 
 
 ----> 'preprocessing_1.py' runs the first part of the preprocessing process and creates 'data_deg_bbdd.csv' in 'DEG R' folder.
@@ -12,7 +14,7 @@
 
 ----> 'preprocessing_2.py' runs the second part of the preprocessing process using the DEG genes. Generates the final database and saves it in 'Clean Data' folder.
 
-----> 'plos_code.py' executes the script for building networks and extract metrics using miRNetClassifier.
+----> 'plos_code.py' executes the script for building networks and extract metrics using miRNetClassifier. Outputs are saved in 'PLOS Results'.
 
 
 
