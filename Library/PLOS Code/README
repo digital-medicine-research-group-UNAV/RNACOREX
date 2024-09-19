@@ -1,12 +1,12 @@
 --> 'TCGA Raw Data' contains the original data extracted from GDC without preprocessing.
 
---> In 'DEG R' files for Differential Gene Expression, R scripts for DEG and differentially expressed genes are saved.
+--> In 'DEG R', R scripts for DEG are saved. Datasets for DEG and differentially expressed genes are saved here.
 
---> In 'Clean Data' the final database after preprocessing and DEG are saved.
+--> In 'Clean Data' the final database is saved.
 
---> 'PLOS Results' contains the main outputs paper code.
+--> 'PLOS Results' contains the main outputs of paper code.
 
-
+# EXECUTION PROCESS
 
 ----> 'preprocessing_1.py' runs the first part of the preprocessing process and creates 'data_deg_bbdd.csv' in 'DEG R' folder.
 
