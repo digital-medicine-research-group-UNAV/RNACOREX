@@ -9,13 +9,13 @@
 
 # EXECUTION PROCESS #
 
-----> 'preprocessing_1.py' runs the first part of the preprocessing process.
+----> 1) 'preprocessing_1.py' runs the first part of the preprocessing process.
 
-----> 'edgeR_DEG_bbdd.R' scripts executes the DEG of the specific 'data_deg_bbdd.csv' database. 'master.R' executes DEG for all databases.
+----> 2) 'edgeR_DEG_bbdd.R' scripts executes the DEG of the specific 'data_deg_bbdd.csv' database. 'master.R' executes DEG for all databases.
 
-----> 'preprocessing_2.py' runs the second part of the preprocessing process using the DEG genes. Generates the final database and saves it in 'Clean Data' folder.
+----> 3) 'preprocessing_2.py' runs the second part of the preprocessing process using the DEG genes. Generates the final database and saves it in 'Clean Data' folder.
 
-----> 'plos_code.py' executes the script for building networks and extract metrics using miRNetClassifier. Outputs are saved in 'PLOS Results'.
+----> 4) 'plos_code.py' executes the script for building networks and extract metrics using miRNetClassifier. Outputs are saved in 'PLOS Results'.
 
 
 
