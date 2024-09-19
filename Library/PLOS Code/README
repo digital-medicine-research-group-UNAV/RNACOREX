@@ -6,7 +6,7 @@
 
 --> 'PLOS Results' contains the main outputs of paper code.
 
-# EXECUTION PROCESS
+# EXECUTION PROCESS #
 
 ----> 'preprocessing_1.py' runs the first part of the preprocessing process and creates 'data_deg_bbdd.csv' in 'DEG R' folder.
 
