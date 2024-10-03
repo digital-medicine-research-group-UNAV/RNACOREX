@@ -1,6 +1,6 @@
-# miRNetClassifier
+# RNACOREX
 
-miRNetClassifier is a package that extracts the post-transcriptional coregulation network associated to a specific phenotype. The package filters the input miRNAs and mRNAs using well-known databases such as TargetScan, DIANA and miRTarBase and develops Conditional Linear Gaussian Classifiers (CLGs) to identify the most relevant miRNA-mRNA interactions and classify new samples.
+RNACOREX is a package that extracts the post-transcriptional coregulation network associated to a specific phenotype. The package filters the input miRNAs and mRNAs using well-known databases such as TargetScan, DIANA and miRTarBase and develops Conditional Linear Gaussian Classifiers (CLGs) to identify the most relevant miRNA-mRNA interactions and classify new samples.
 
 ## Quickstart
 
