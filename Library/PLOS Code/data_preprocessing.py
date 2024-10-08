@@ -3,8 +3,8 @@ import os
 import pandas as pd
 from gtfparse import read_gtf
 
-miRNetClassifier_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'miRNetClassifier'))
-sys.path.append(miRNetClassifier_path)
+RNACOREX_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'RNACOREX'))
+sys.path.append(RNACOREX_path)
 
 import AuxiliaryFunctions
 
@@ -14,10 +14,10 @@ def preprocessing_1(bbdd, umbral_na, umbral_variabilidad, only_noncensored = Fal
     data_mirna = pd.read_csv('TCGA Raw Data/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.mirna.tsv', sep = '\t')
     data_survival = pd.read_csv('TCGA Raw Data/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.survival.tsv', sep = '\t')
 
-    gtf_path = os.path.join(miRNetClassifier_path, 'gtf', 'gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf')
+    gtf_path = os.path.join(RNACOREX_path, 'gtf', 'gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf')
 
     gtf = read_gtf(gtf_path)
-    # gtf = read_gtf('miRNetClassifier/gtf/gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf.gz')
+    # gtf = read_gtf('RNACOREX/gtf/gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf.gz')
 
     # ELIMINAR MUESTRAS PERITUMORALES
 
