@@ -6,11 +6,11 @@ from tqdm import tqdm
 from sklearn.model_selection import StratifiedKFold
 import matplotlib.pyplot as plt
 
-# Get the path to the miRNetClassifier directory
-miRNetClassifier_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'miRNetClassifier'))
+# Get the path to the RNACOREX directory
+RNACOREX_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'RNACOREX'))
 
 # Add the miRNetClassifier path to sys.path
-sys.path.append(miRNetClassifier_path)
+sys.path.append(RNACOREX_path)
 
 # Define a function for display and save results in graphics.
 
