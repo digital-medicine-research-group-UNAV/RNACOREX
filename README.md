@@ -8,7 +8,7 @@ Please, read library instructions before using the library.
 
 ## Quickstart
 
-Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *Examples* folder for additional examples.
+Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *PLOS Code* for the article code.
 
 Firstly, we will import the required modules.
 
