@@ -9,7 +9,7 @@ class MRNC(BaseEstimator, ClassifierMixin):
         
         """
 
-        A class to represent a person.
+        miRNetClassifier model.
 
         Attributes:
 
