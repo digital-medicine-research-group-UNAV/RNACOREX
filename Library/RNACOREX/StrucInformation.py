@@ -322,6 +322,10 @@ def run_engine_scikit(X_train, y_train, save = 'url', link_txt=False):
     tscan_path = os.path.join(current_dir, 'StructuralEngine/Targetscan_targets.txt')
     mtbase_path = os.path.join(current_dir, 'StructuralEngine/MTB_targets.csv')
 
+    diana = pd.read_csv(diana_path, sep='\t')
+    targetscan = pd.read_csv(tscan_path, sep='\t')
+    mirtarbase = pd.read_csv(mtbase_path, sep=';')
+
     # Filter the databases to keep only the columns of interest (gene and miRNA).
 
     diana = diana.loc[:, ['ensembl_gene_id', 'mirna']]
