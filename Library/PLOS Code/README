@@ -1,3 +1,5 @@
+--> Place the required datasets in 'TCGA Raw Data' (See library instructions)
+
 --> 'TCGA Raw Data' contains the original data extracted from GDC without preprocessing.
 
 --> 'DEG R' contains R scripts for DEG. Datasets for DEG and differentially expressed genes are saved here.
