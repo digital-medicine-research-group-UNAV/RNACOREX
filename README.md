@@ -27,7 +27,7 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `tqdm` 4.65.0 +
 
-For the DGE developed in the article code the next requirements has to be taken into account.
+For the DGE developed in the article code the next requirements have to be taken into account.
 
 `R` 4.3.0 +
 
