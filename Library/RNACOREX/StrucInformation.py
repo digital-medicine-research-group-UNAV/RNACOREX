@@ -310,14 +310,17 @@ def run_engine_scikit(X_train, y_train, save = 'url', link_txt=False):
             sys.stdout = sys.__stdout__
 
     # Read the gtf file.
-
-    gtf = read_gtf("gtf/gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf")
+    
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    gtf_path = os.path.join(current_dir, "gtf/gencode.v45.chr_patch_hapl_scaff.basic.annotation.gtf")
+    gtf = read_gtf(gtf_path)
 
     # Read the databases of predicted interactions.
 
-    diana = pd.read_csv('StructuralEngine/DIANA_targets.txt', sep='\t')
-    targetscan = pd.read_csv('StructuralEngine/Targetscan_targets.txt', sep='\t')
-    mirtarbase = pd.read_csv('StructuralEngine/MTB_targets.csv', sep=';')
+    diana_path = os.path.join(current_dir, 'StructuralEngine/DIANA_targets.txt')
+    tscan_path = os.path.join(current_dir, 'StructuralEngine/Targetscan_targets.txt')
+    mtbase_path = os.path.join(current_dir, 'StructuralEngine/MTB_targets.csv')
 
     # Filter the databases to keep only the columns of interest (gene and miRNA).
 
