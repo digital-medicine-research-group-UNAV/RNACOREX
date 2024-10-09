@@ -10,20 +10,28 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `Python` 3.12.4 +
 
-gtfparse 2.5.0 +
-matplotlib 3.8.4 +
-networkx 3.1 +
-numpy 1.26.4 +
-pandas 2.1.4 +
-scipy 1.13.1 +
-scikit-learn 1.4.2 +
-tqdm 4.65.0 +
+
+`gtfparse` 2.5.0 +
+
+`matplotlib` 3.8.4 +
+
+`networkx` 3.1 +
+
+`numpy` 1.26.4 +
+
+`pandas` 2.1.4 +
+
+`scipy` 1.13.1 +
+
+`scikit-learn` 1.4.2 +
+
+`tqdm` 4.65.0 +
 
 For the DGE developed in the article code the next requirements has to be taken into account.
 
-R 4.3.0 +
+`R` 4.3.0 +
 
-edgeR 4.0.16 +
+`edgeR` 4.0.16 +
 
 ## Quickstart
 
