@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 from tqdm import tqdm
 from scipy.stats import ttest_ind
 from statsmodels.stats.multitest import multipletests
@@ -20,7 +21,9 @@ def rename_all(gene_list, gtf):
             
     """
 
-    extra = pd.read_csv('gtf/conversor2.txt', sep='\s+', header=None)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    conversor_path = os.path.join(current_dir, 'gtf', 'conversor2.txt')
+    extra = pd.read_csv(conversor_path, sep='\s+', header=None)
     extra.columns = ['gene_name', 'gene_id']
     new_df = pd.DataFrame()
     new_df['gene_id'] = gtf['gene_id']
@@ -45,7 +48,9 @@ def ens_to_gen(ens_list, gtf):
     
             renamed_list (list): list of renamed genes in Hugo Symbols.    """
 
-    extra = pd.read_csv('gtf/conversor2.txt', sep='\s+', header=None)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    conversor_path = os.path.join(current_dir, 'gtf', 'conversor2.txt')
+    extra = pd.read_csv(conversor_path, sep='\s+', header=None)
     extra.columns = ['gene_name', 'gene_id']
     new_df = pd.DataFrame()
     new_df['gene_id'] = gtf['gene_id']
@@ -75,7 +80,9 @@ def rename_genes(gene_list, gtf):
             
     """
 
-    extra = pd.read_csv('gtf/conversor2.txt', sep='\s+', header=None)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    conversor_path = os.path.join(current_dir, 'gtf', 'conversor2.txt')
+    extra = pd.read_csv(conversor_path, sep='\s+', header=None)
     extra.columns = ['gene_name', 'gene_id']
 
     new_df = pd.DataFrame()
