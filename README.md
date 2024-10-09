@@ -6,6 +6,8 @@ RNACOREX is a package that extracts the post-transcriptional coregulation networ
 
 Please, read library instructions before using the library.
 
+RNACOREX implements the next libraries and versions. Correct operation of the package cannot be ensured with other versions.
+
 ## Quickstart
 
 Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *PLOS Code* for the article code.
