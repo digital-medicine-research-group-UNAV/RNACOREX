@@ -206,7 +206,7 @@ class MRNC(BaseEstimator, ClassifierMixin):
 
                 self.is_ranked_ = True
 
-            self.nodos_dag_, self.clgc_ = CLGStructure.fit_model(X_train, y_train, self.n_con, self.intern_connections_)
+            self.nodos_dag_, self.clgc_ = CLGStructure.fit_model(self.X_, self.y_, self.n_con, self.intern_connections_)
 
             self.is_fitted_ = True
 
