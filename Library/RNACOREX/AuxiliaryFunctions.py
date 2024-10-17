@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from tqdm import tqdm
 from scipy.stats import ttest_ind
-from statsmodels.stats.multitest import multipletests
+# from statsmodels.stats.multitest import multipletests
 from scipy.stats import mannwhitneyu
 from gtfparse import read_gtf
 
