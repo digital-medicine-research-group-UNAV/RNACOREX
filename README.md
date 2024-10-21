@@ -29,7 +29,7 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `pydot` 1.4.2 +
 
-For the DGE developed in the article code the next requirements have to be taken into account.
+For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account.
 
 `R` 4.3.0 +
 
