@@ -10,7 +10,8 @@ from scipy.stats import norm
 from tqdm import tqdm
 # from tabulate import tabulate
 from numpy import inf
-from networkx.drawing.nx_pydot import graphviz_layout
+# from networkx.drawing.nx_pydot import graphviz_layout
+from networkx.drawing.nx_agraph import graphviz_layout
 from AuxiliaryFunctions import ens_to_gen
 from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
