@@ -21,6 +21,8 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `pandas` 2.1.4 +
 
+`pygraphviz` 1.9 +
+
 `scipy` 1.13.1 +
 
 `scikit-learn` 1.4.2 +
