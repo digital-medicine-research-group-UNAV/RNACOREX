@@ -217,7 +217,7 @@ class MRNC(BaseEstimator, ClassifierMixin):
 
             """
             
-            Searches the structure of the model.
+            Searches the structure of the model. The model has to be previously initialized.
             
             Args:
             
