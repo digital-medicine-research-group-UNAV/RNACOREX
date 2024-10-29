@@ -213,14 +213,16 @@ class MRNC(BaseEstimator, ClassifierMixin):
             return self
 
         
-        def structure_search(self, X_test = None, y_test = None, max_models = None, link_txt = False):
+        def structure_search(self, X_train = None, y_train = None, X_test = None, y_test = None, max_models = None, link_txt = False):
 
             """
             
-            Searches the structure of the model. The model has to be previously initialized.
+            Searches the structure of the model.
             
             Args:
-            
+
+                    X_train (pd.DataFrame): The input data with miRNA and mRNA expressions.
+                    y_train (pd.Series): The binary values of the class/phenotype.
                     X_test (pd.DataFrame): The input data with miRNA and mRNA expressions.
                     y_test (pd.Series): The binary values of the class/phenotype.
                     max_models (int): The maximum number of models to be computed.
@@ -235,35 +237,67 @@ class MRNC(BaseEstimator, ClassifierMixin):
 
             self.metrics_computed_ = False
 
-            if X_test is None and y_test is None:
+            if X_train is None and y_train is None:
 
-                # En este caso no damos TRAIN
+                if X_test is None and y_test is None:
 
-                if hasattr(self, 'intern_connections_'):
+                    # En este caso no damos TRAIN
 
-                    self.structure_metrics_ = CLGStructure.structure_search(X_train = self.X_, y_train = self.y_, max_models = max_models, conexiones = self.intern_connections_, link_txt = link_txt)
+                    if hasattr(self, 'intern_connections_'):
 
-                    self.metrics_computed_ = True
+                        self.structure_metrics_ = CLGStructure.structure_search(X_train = self.X_, y_train = self.y_, max_models = max_models, conexiones = self.intern_connections_, link_txt = link_txt)
 
+                        self.metrics_computed_ = True
+
+                    else:
+
+                        raise RuntimeError("Model has not been initialized. Please initialize.")
+                    
                 else:
+                    
+                    if hasattr(self, 'intern_connections_'):
 
-                    raise RuntimeError("Model has not been initialized. Please initialize.")
-                  
+                        X_test = X_test[self.micros_+self.genes_]
+
+                        self.structure_metrics_ = CLGStructure.structure_search(X_train = self.X_, y_train = self.y_, X_test = X_test, y_test = y_test, max_models = max_models, conexiones = self.intern_connections_, link_txt = link_txt)
+
+                        self.metrics_computed_ = True
+
+                    else:
+
+                        raise RuntimeError("Model has not been initialized. Please initialize.")
+            
             else:
+
+                if X_test is None and y_test is None:
+
+                    if hasattr(self, 'intern_connections_'):
+
+                        self.structure_metrics_ = CLGStructure.structure_search(X_train = X_train, y_train = y_train, max_models = max_models, conexiones = self.intern_connections_, link_txt = link_txt)
+
+                        self.metrics_computed_ = True
+
+                    else:
+
+                        raise RuntimeError("Model has not been initialized. Please initialize.")
                 
-                if hasattr(self, 'intern_connections_'):
-
-                    X_test = X_test[self.micros_+self.genes_]
-
-                    self.structure_metrics_ = CLGStructure.structure_search(X_train = self.X_, y_train = self.y_, X_test = X_test, y_test = y_test, max_models = max_models, conexiones = self.intern_connections_, link_txt = link_txt)
-
-                    self.metrics_computed_ = True
-
                 else:
 
-                    raise RuntimeError("Model has not been initialized. Please initialize.")
+                    if hasattr(self, 'intern_connections_'):
 
-            return self.structure_metrics_    
+                        X_test = X_test[self.micros_+self.genes_]
+
+                        X_train = X_train[self.micros_+self.genes_]
+
+                        self.structure_metrics_ = CLGStructure.structure_search(X_train = X_train, y_train = y_train, X_test = X_test, y_test = y_test, max_models = max_models, conexiones = self.intern_connections_, link_txt = link_txt)
+
+                        self.metrics_computed_ = True
+
+                    else:
+
+                        raise RuntimeError("Model has not been initialized. Please initialize.")
+
+            return self.structure_metrics_  
 
 
         def predict(self, X_test):
