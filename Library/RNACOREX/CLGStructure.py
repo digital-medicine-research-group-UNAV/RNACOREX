@@ -8,7 +8,7 @@ import sys
 from scipy.linalg import inv
 from scipy.stats import norm
 from tqdm import tqdm
-from tabulate import tabulate
+# from tabulate import tabulate
 from numpy import inf
 from networkx.drawing.nx_agraph import graphviz_layout
 from AuxiliaryFunctions import ens_to_gen
