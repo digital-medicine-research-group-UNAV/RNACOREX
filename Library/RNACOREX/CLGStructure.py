@@ -1,7 +1,7 @@
 import networkx as nx
 import numpy as np
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import sys
