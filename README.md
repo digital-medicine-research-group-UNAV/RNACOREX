@@ -123,6 +123,10 @@ print(mrnc.connections_)
 
 print(mrnc.clgc_)
 
+# The graph associated to the CLG model.
+
+print(mrnc.G_)
+
 ```
 
 The fitted model can also be used for predictions.
