@@ -176,7 +176,7 @@ nx.draw_networkx_labels(mrnc.G_, pos, font_size=8, font_color='black')
 ```
 
 <p align="center">
-  <img src="networkx.png" alt="Alt Text" width="600" height="600">
+  <img src="output.png" alt="Alt Text" width="600" height="600">
 </p>
 
 This representation lacks important information, such as the functional and structural information between nodes. 
