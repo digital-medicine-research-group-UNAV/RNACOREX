@@ -129,7 +129,33 @@ print(mrnc.G_)
 
 ```
 
-`mrnc.G_` loads the network as a MultDiGraph object of `networkx` package, allowing to use any of its methods.
+`mrnc.G_` loads the network as a MultDiGraph object of `networkx` package, allowing to use any of its methods. For example:
+
+```python
+
+# See nodes
+
+print(mrnc.G_.nodes())
+
+# See edges
+
+print(mrnc.G_.edges())
+
+# Add nodes.
+
+mrnc.G_.add_node('hsa-mir-21')
+
+mrnc.G_.add_node('hsa-mir-22')
+
+# Add edges.
+
+mrnc.G_.add_edge('hsa-mir-21', 'hsa-mir-22')
+
+# Remove node and associated edges.
+
+mrnc.G_.remove_node('hsa-mir-21')
+
+```
 
 The fitted model can also be used for predictions.
 
