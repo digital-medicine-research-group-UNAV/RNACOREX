@@ -179,9 +179,7 @@ nx.draw_networkx_labels(mrnc.G_, pos, font_size=8, font_color='black')
   <img src="output.png" alt="Alt Text" width="400" height="300">
 </p>
 
-This representation lacks important information, such as the functional and structural information between nodes. 
-
-A more complete framework for network visualization developed by `RNACOREX` will be introduced later.
+This representation lacks important information, such as the functional and structural information between nodes. The `get_network()` framework introduced by `RNACOREX` offers a more complete visualization of the network.
 
 The fitted model can also be used for predictions.
 
