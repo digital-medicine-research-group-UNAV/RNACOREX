@@ -157,6 +157,32 @@ mrnc.G_.remove_node('hsa-mir-21')
 
 ```
 
+A first sight of the network can be easily drawn using networkx methods.
+
+```python
+
+import networkx as nx
+
+from networkx.drawing.nx_agraph import graphviz_layout
+
+pos = graphviz_layout(mrnc.G_, prog='neato')
+
+nx.draw_networkx_nodes(mrnc.G_, pos, node_color='skyblue', node_size=200)
+
+nx.draw_networkx_edges(mrnc.G_, pos)
+
+nx.draw_networkx_labels(mrnc.G_, pos, font_size=8, font_color='black')
+
+```
+
+<p align="center">
+  <img src="networkx.png" alt="Alt Text" width="600" height="600">
+</p>
+
+This representation lacks important information, such as the functional and structural information between nodes. 
+
+A more complete framework for network visualization developed by `RNACOREX` will be introduced later.
+
 The fitted model can also be used for predictions.
 
 ```python
