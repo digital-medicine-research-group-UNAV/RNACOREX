@@ -229,19 +229,21 @@ The `structure_search()` function allows to develop networks with 1 to *max_mode
 
 ```python
 
-# Search for optimal structure with personalized train and test sets.
+# Search for best structure with test set.
 
 mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
 
-# Use only personalized test sets.
+# Search for best structure with test set.
 
-mrnc.structure_search(X_test, y_test, 100)
+mrnc.structure_search(X_train, y_train, max_models = 100)
 
-# Use default train sets and no test set.
+# Search for best structure with test set.
 
-mrnc.structure_search(100)
+mrnc.structure_search(X_test = X_test, y_test = y_test, max_models = 100)
 
-# Get metrics.
+# Search for best structure with only train set.
+
+mrnc.structure_search(max_models = 100)
 
 print(mrnc.structure_metrics_)
 
