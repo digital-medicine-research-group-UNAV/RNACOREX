@@ -129,6 +129,8 @@ print(mrnc.G_)
 
 ```
 
+`mrnc.G_` loads the network as a MultDiGraph object of `networkx` package, allowing to use any of its methods.
+
 The fitted model can also be used for predictions.
 
 ```python
