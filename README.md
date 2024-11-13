@@ -92,7 +92,7 @@ mrnc.get_network()
 The resulting network:
 
 <p align="center">
-  <img src="brca_network.svg" alt="Alt Text" width="600" height="600">
+  <img src="network.jpg" alt="Alt Text" width="600" height="600">
 </p>
 
 Once the model is fitted, several atributes could be accessed.
