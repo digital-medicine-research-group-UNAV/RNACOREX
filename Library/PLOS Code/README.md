@@ -8,9 +8,9 @@
 
 * For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account.
 
-- `R` 4.3.0 +
+  - `R` 4.3.0 +
 
-- `edgeR` 4.0.16 +
+  - `edgeR` 4.0.16 +
 
 * In `Clean Data` the final database is saved.
 
