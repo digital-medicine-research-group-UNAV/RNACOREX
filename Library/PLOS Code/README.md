@@ -1,4 +1,4 @@
-# PLOS CODE Instructions
+### PLOS CODE Instructions
 
 --> Place the required datasets in 'TCGA Raw Data' (See library instructions)
 
@@ -8,16 +8,16 @@
 
 --> For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account.
 
-- `R` 4.3.0 +
+`R` 4.3.0 +
 
-- `edgeR` 4.0.16 +
+`edgeR` 4.0.16 +
 
 --> In 'Clean Data' the final database is saved.
 
 --> 'PLOS Results' contains the main outputs of paper code.
 
 
-# EXECUTION PROCESS #
+### EXECUTION PROCESS
 
 ----> 1) 'preprocessing_1.py' runs the first part of the preprocessing process.
 
