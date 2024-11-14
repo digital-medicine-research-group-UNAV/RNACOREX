@@ -219,19 +219,19 @@ mrnc.get_network()
 
 The fit-predict framework executes the model from an static point of view, with a specific number of interaction defined by the user.
 
-The `structure_search()` function allows to develop networks with 1 to *max_models* interactions and obtain its metrics. The model has to be initialized and the functional information computed beforehand. Train and test samples can be specified or not depending on user requirements. If train sets are not specified the ones included in `initialize_model()` are used. If train sets are specified the variables have to coincide with the ones in `initialize_model()`.
+The `structure_search()` function allows to develop networks with 1 to *max_models* interactions and obtain its metrics. The model has to be initialized and the functional information computed beforehand. Train and test samples can be specified or not depending on user requirements. If train sets are not specified the ones included in `initialize_model()` are used. If train sets are specified the variables have to coincide with the ones used in `initialize_model()`.
 
 ```python
 
-# Search for best structure with test set.
+# Search for best structure with new train and test sets.
 
 mrnc.structure_search(X_train, y_train, X_test, y_test, 100)
 
-# Search for best structure without test set.
+# Search for best structure with new train set and without test set.
 
 mrnc.structure_search(X_train, y_train, max_models = 100)
 
-# Search for best structure with test set and previously initialized train set.
+# Search for best structure with previously initialized train set and test set.
 
 mrnc.structure_search(X_test = X_test, y_test = y_test, max_models = 100)
 
