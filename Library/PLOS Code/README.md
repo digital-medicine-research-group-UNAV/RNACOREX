@@ -19,12 +19,14 @@
 
 ### EXECUTION PROCESS
 
-----> 1) 'preprocessing_1.py' runs the first part of the preprocessing process.
+*) 'plos_code.py' can be directly executed without running all the preprocessing as the Clean Data is already saved in 'Clean Data' folder.
 
-----> 2) 'DEG R/edgeR_DEG_bbdd.R' scripts executes the DEG of the specific 'data_deg_bbdd.csv' database. 'DEG R/master.R' executes DEG for all databases.
+For full process execution:
 
-----> 3) 'preprocessing_2.py' runs the second part of the preprocessing process using the DEG genes. Generates the final database and saves it in 'Clean Data' folder.
+1) 'preprocessing_1.py' runs the first part of the preprocessing process.
 
-----> 4) 'plos_code.py' executes the script for building networks and extract metrics using RNACOREX. Outputs are saved in 'PLOS Results'.
+2) 'DEG R/edgeR_DEG_bbdd.R' scripts executes the DEG of the specific 'data_deg_bbdd.csv' database. 'DEG R/master.R' executes DEG for all databases.
 
-----> *) 'plos_code.py' can also be directly executed without running all the preprocessing as the Clean Data is already saved in 'Clean Data' folder.
+3) 'preprocessing_2.py' runs the second part of the preprocessing process using the DEG genes. Generates the final database and saves it in 'Clean Data' folder.
+
+4) 'plos_code.py' executes the script for building networks and extract metrics using RNACOREX. Outputs are saved in 'PLOS Results'.
