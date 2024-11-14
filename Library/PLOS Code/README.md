@@ -1,20 +1,20 @@
 ### PLOS CODE Instructions
 
---> Place the required datasets in `TCGA Raw Data` (See library instructions)
+* Place the required datasets in `TCGA Raw Data` (See library instructions)
 
---> `TCGA Raw Data` contains the original data extracted from GDC without preprocessing.
+* `TCGA Raw Data` contains the original data extracted from GDC without preprocessing.
 
---> `DEG R` contains R scripts for DEG. Datasets for DEG and differentially expressed genes are saved here. 
+* `DEG R` contains R scripts for DEG. Datasets for DEG and differentially expressed genes are saved here. 
 
---> For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account.
+* For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account.
 
-`R` 4.3.0 +
+- `R` 4.3.0 +
 
-`edgeR` 4.0.16 +
+- `edgeR` 4.0.16 +
 
---> In `Clean Data` the final database is saved.
+* In `Clean Data` the final database is saved.
 
---> `PLOS Results` contains the main outputs of paper code.
+* `PLOS Results` contains the main outputs of paper code.
 
 
 ### EXECUTION PROCESS
