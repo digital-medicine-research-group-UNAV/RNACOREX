@@ -245,7 +245,7 @@ print(mrnc.structure_metrics_)
 
 ```
 
-`structure_metrics_` displays metrics for all models from 1 to *max_models* interactions, showing *Accuracy*, *Log-Likelihood*, *BIC*, *AUC*, *Sensitivity* and *Specificity*.
+`structure_metrics_` displays metrics for all models from 1 to *max_models* interactions, showing *Accuracy*, *Log-Likelihood*, *BIC*, *AUC*, *Sensitivity* and *Specificity* of each network.
 
 ## References
 
