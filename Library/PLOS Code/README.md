@@ -6,7 +6,7 @@
 
 * `DEG R` contains R scripts for DEG. Datasets for DEG and differentially expressed genes are saved here. 
 
-* For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account.
+* For the Differential Gene Expression (DGE) developed in the article code the next requirements have to be taken into account:
 
   - `R` 4.3.0 +
 
@@ -19,7 +19,7 @@
 
 ### EXECUTION PROCESS
 
-*) `plos_code.py` can be directly executed without running all the preprocessing as the Clean Data is already saved in 'Clean Data' folder.
+* `plos_code.py` can be directly executed without running all the preprocessing as the Clean Data is already saved in 'Clean Data' folder.
 
 For full process execution:
 
