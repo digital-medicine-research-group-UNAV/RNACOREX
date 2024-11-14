@@ -298,7 +298,7 @@ def run_engine_scikit(X_train, y_train, save = 'url', link_txt=False):
     
     """
 
-    print('INICIALIZANDO MOTORES...')
+    print('INITIALIZING ENGINE...')
 
     # If a link_txt is indicated, the class distribution of the train set is written down.
 
@@ -445,7 +445,7 @@ def run_engine_scikit(X_train, y_train, save = 'url', link_txt=False):
 
     # Print the information of the model.
 
-    print('\nMODEL INITIALIZED')
+    print('\nENGINE INITIALIZED')
     print('MicroRNAs: ', len(micros))
     print('Genes: ', len(genes))
     print('Connections: ', len(structural_information.nonzero()[0]))
@@ -456,7 +456,7 @@ def run_engine_scikit(X_train, y_train, save = 'url', link_txt=False):
 
         with open(link_txt, 'a') as f:
             sys.stdout = f
-            print('\nMODEL INITIALIZED')
+            print('\nENGINE INITIALIZED')
             print('MicroRNAs: ', len(micros))
             print('Genes: ', len(genes))
             print('Connections: ', len(structural_information.nonzero()[0]))
