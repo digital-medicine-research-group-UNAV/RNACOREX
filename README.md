@@ -239,9 +239,13 @@ mrnc.structure_search(X_test = X_test, y_test = y_test, max_models = 100)
 
 mrnc.structure_search(max_models = 100)
 
+# Show metrics of all networks
+
 print(mrnc.structure_metrics_)
 
 ```
+
+`structure_metrics_` displays metrics for all models from 1 to *max_models* interactions, showing *Accuracy*, *Log-Likelihood*, *BIC*, *AUC*, *Sensitivity* and *Specificity*.
 
 ## References
 
