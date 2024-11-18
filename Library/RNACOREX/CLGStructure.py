@@ -887,8 +887,8 @@ def get_network(connections, k, save = 'url'):
     # Add edges with labels and keys
 
     for i in range(0, k):
-        G.add_edge(cons_def.iloc[i,0], cons_def.iloc[i,1], key='struc', weight=cons_def.iloc[i,2]*10)
-        G.add_edge(cons_def.iloc[i,0], cons_def.iloc[i,1], key='func', weight=cons_def.iloc[i,3]*10)
+        G.add_edge(cons_def.iloc[i,0], cons_def.iloc[i,1], key='struc', weight=cons_def.iloc[i,2])
+        G.add_edge(cons_def.iloc[i,0], cons_def.iloc[i,1], key='func', weight=cons_def.iloc[i,3])
 
 
     # Layout for positioning nodes
@@ -909,8 +909,8 @@ def get_network(connections, k, save = 'url'):
         edges_struc.append((cons_def.iloc[i,0], cons_def.iloc[i,1], 'struc'))
         edges_func.append((cons_def.iloc[i,0], cons_def.iloc[i,1], 'func'))
 
-    nx.draw_networkx_edges(G, pos, edgelist=edges_struc, edge_color='purple', connectionstyle=f'arc3,rad={arc_rad1}', arrows=False, width=[G[u][v][k]['weight'] for u, v, k in edges_struc], alpha=0.5)
-    nx.draw_networkx_edges(G, pos, edgelist=edges_func, edge_color='red', connectionstyle=f'arc3,rad={arc_rad2}', arrows=False, width=[G[u][v][k]['weight'] for u, v, k in edges_func], alpha=0.5)
+    nx.draw_networkx_edges(G, pos, edgelist=edges_struc, edge_color='purple', connectionstyle=f'arc3,rad={arc_rad1}', arrows=False, width=[G[u][v][k]['weight']*10 for u, v, k in edges_struc], alpha=0.5)
+    nx.draw_networkx_edges(G, pos, edgelist=edges_func, edge_color='red', connectionstyle=f'arc3,rad={arc_rad2}', arrows=False, width=[G[u][v][k]['weight']*10 for u, v, k in edges_func], alpha=0.5)
 
     ax = plt.gca()
     for node, (x, y) in pos.items():
