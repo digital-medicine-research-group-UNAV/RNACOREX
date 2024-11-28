@@ -239,7 +239,7 @@ def initialize_graph(inputFile, mirNames = None, geneNames = None):
 
     # Initialize the edges. The weight of each edge is the number of times each connection appears.
 
-    print('INICIALIZANDO GRAFO...')
+    print('INITIALIZING GRAPH...')
 
     for i in tqdm(range(0,len(TScanPredict))):
 
@@ -298,7 +298,7 @@ def run_engine_scikit(X_train, y_train, save = 'url', link_txt=False):
     
     """
 
-    print('INICIALIZANDO MOTORES...')
+    print('INITIALIZING ENGINES...')
 
     # If a link_txt is indicated, the class distribution of the train set is written down.
 
