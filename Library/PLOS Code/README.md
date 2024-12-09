@@ -1,6 +1,6 @@
 ### PLOS CODE Instructions
 
-* Place the required datasets in `TCGA Raw Data` (See library instructions)
+* Place the required datasets in `TCGA Raw Data` (See library instructions). (09/12/2024) The mRNA expression data format in UCSC Xena has been changed from HTSeq_Counts to STAR_Counts, please take into account before running the article code.
 
 * `TCGA Raw Data` contains the original data extracted from GDC without preprocessing.
 
