@@ -71,7 +71,7 @@ rnacorex3 = RNACOREX.RNACOREX(n_con = (100, 150), precision=10)
 
 ```
 
-# Using train and test sets the model can be easily fitted.
+Using train and test sets the model can be easily fitted.
 
 ```python
 
