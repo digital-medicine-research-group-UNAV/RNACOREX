@@ -58,13 +58,11 @@ rnacorex = RNACOREX.RNACOREX(n_con = 150, precision=2)
 
 ```python
 
-rnacorex = RNACOREX.RNACOREX(n_con = 150, precision=2)
+rnacorex.fit(X_train, y_train)
 
 ```
 
 ```python
-
-rnacorex.fit(X_train, y_train)
 
 rl = rnacorex.predict(X_test)
 
