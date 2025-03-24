@@ -155,7 +155,15 @@ results = rnacorex.predict(X_test)
 
 ```
 
-The predict function returns both the selected class `'classification'` and the posterior probability `'posterior'`.
+The predict function returns both the selected class with `'classification'` and the posterior probability with `'posterior'`.
+
+```python
+
+print(results['classification'])
+
+print(results['posterior'])
+
+```
 
 ## References
 
