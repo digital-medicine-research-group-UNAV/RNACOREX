@@ -144,7 +144,7 @@ get_interactions(rnacorex.models_[150], 50)
 
 ```
 <p align="center">
-  <img src="images/interactions_150.png" alt="Alt Text" width="450" height="200">
+  <img src="images/interactions_150.png" alt="Alt Text" width="475" height="200">
 </p>
 
 The model can be used for predicting over the test set with the `predict()` function.
