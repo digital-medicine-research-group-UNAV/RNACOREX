@@ -94,13 +94,37 @@ In `models_` a dictionary with all model information is saved. For accessing the
 rnacorex.models_[150]
 
 ```
-Several information could be accessed; fitted parameters, functional and structural information values and the resulting network, among others.
+Several information could be accessed; fitted parameters, functional and structural information values and the resulting network, among others. The network is accesible in the `'G'` key. The network is saved as a Multigraph from the `networkx` package.
 
 ```python
 
-rl = rnacorex.predict(X_test)
+G = rnacorex.models_[150]['G']
 
 ```
+
+Different element types are saved with different colors; blue for mRNAs, green for miRNAs and red for lncRNAs.
+
+```python
+
+plt.figure(figsize=(16, 16))
+
+pos = graphviz_layout(G, prog='neato')
+
+node_colors = [G.nodes[node]["color"] for node in G.nodes]
+
+nx.draw_networkx_nodes(G, pos, node_color=node_colors)
+
+nx.draw_networkx_edges(G, pos)
+
+nx.draw_networkx_labels(G, pos, font_size=10, font_color='black')
+
+plt.axis('off')
+
+plt.show()
+
+```
+
+The model can be used for predicting over the test set with the `predict()` function.
 
 ```python
 
