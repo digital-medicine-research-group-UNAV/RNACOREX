@@ -71,6 +71,14 @@ rnacorex3 = RNACOREX.RNACOREX(n_con = (100, 150), precision=10)
 
 ```
 
+By default, are fitted using all kind of interactions. If only specific elements are required, these can be selected from the model definition.
+
+```python
+
+rnacorex4 = RNACOREX.RNACOREX(X_train, y_train, mrna = True, mirna = True, lncrna = False)
+
+```
+
 Using train and test sets the model can be easily fitted.
 
 ```python
