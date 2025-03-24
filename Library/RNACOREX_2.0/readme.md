@@ -26,4 +26,16 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `tqdm` 4.65.0 +
 
-## Quickstart
+# Quick Start
+
+Firstly, we will import the required modules.
+
+```python
+
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+
+import miRNetClassifier
+
+```
