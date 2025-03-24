@@ -134,6 +134,19 @@ The resulting network:
   <img src="images/network_150.png" alt="Alt Text" width="600" height="600">
 </p>
 
+The main interactions can be accessed with the `get_interactions()` function, obtaining the elements in the interactions, their functional and structural information values and their types.
+
+```python
+
+from CLGStructure import get_interactions
+
+get_interactions(rnacorex.models_[150], 50)
+
+```
+<p align="center">
+  <img src="images/interactions_150.png" alt="Alt Text" width="600" height="600">
+</p>
+
 The model can be used for predicting over the test set with the `predict()` function.
 
 ```python
