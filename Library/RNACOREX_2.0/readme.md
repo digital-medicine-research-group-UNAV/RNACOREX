@@ -127,6 +127,9 @@ plt.axis('off')
 plt.show()
 
 ```
+<p align="center">
+  <img src="images/network_150.png" alt="Alt Text" width="600" height="600">
+</p>
 
 The model can be used for predicting over the test set with the `predict()` function.
 
