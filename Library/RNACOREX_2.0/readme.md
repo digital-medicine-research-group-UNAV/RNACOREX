@@ -151,9 +151,11 @@ The model can be used for predicting over the test set with the `predict()` func
 
 ```python
 
-rl = rnacorex.predict(X_test)
+results = rnacorex.predict(X_test)
 
 ```
+
+The predict function returns both the selected class `'classification'` and the posterior probability `'posterior'`.
 
 ## References
 
