@@ -32,6 +32,6 @@ Firstly, we will import the required modules.
 
 ```python
 
-import pandas as pd
+import RNACOREX
 
 ```
