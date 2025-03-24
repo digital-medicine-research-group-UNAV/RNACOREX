@@ -28,18 +28,21 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 # Quick Start
 
-Firstly, we will import the RNACOREX class.
+Firstly, we will import the RNACOREX class and the required modules.
 
 ```python
 
 import RNACOREX
 
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+
 ```
 
-```python
+We charge the data and do the train-test splitting.
 
-import pandas as pd
-from sklearn.model_selection import train_test_split
+```python
 
 data = pd.read_csv('data_complete.csv', index_col = 0)
 
@@ -50,11 +53,25 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 ```
 
+A RNACOREX model is initialized using the `n_con` and `precision` parameters. `n_con` defines the number of interactions used for constructing the network, which can be a single value, a specific set of values or a full range of values. `precision` stands for the precision of the conditional mutual information estimation, increasing complexity of calculations by uding bigger precisions. 
+
 ```python
 
-rnacorex = RNACOREX.RNACOREX(n_con = 150, precision=2)
+# Constructing a model with k = 150.
+
+rnacorex = RNACOREX.RNACOREX(n_con = 150, precision=10)
+
+# Constructing three models with k = 100, k = 150 and k = 200.
+
+rnacorex2 = RNACOREX.RNACOREX(n_con = [100, 150, 200], precision=10)
+
+# Constructing several models with k ranging from 100 to 150.
+
+rnacorex3 = RNACOREX.RNACOREX(n_con = (100, 150), precision=10)
 
 ```
+
+# Using train and test sets the model can be easily fitted.
 
 ```python
 
