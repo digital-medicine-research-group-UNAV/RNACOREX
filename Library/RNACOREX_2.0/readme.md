@@ -131,7 +131,7 @@ plt.show()
 The resulting network:
 
 <p align="center">
-  <img src="images/network_150.png" alt="Alt Text" width="600" height="600">
+  <img src="images/network_150.png" alt="Alt Text" width="200" height="400">
 </p>
 
 The main interactions can be accessed with the `get_interactions()` function, obtaining the elements in the interactions, their functional and structural information values and their types.
