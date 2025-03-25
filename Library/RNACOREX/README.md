@@ -250,5 +250,5 @@ print(mrnc.structure_metrics_)
 ## References
 
 [1] Lewis BP, Shih IH, Jones-Rhoades MW, Bartel DP. Prediction of mammalian MicroRNA targets. Cell 2003; 115, 787-798. \
-[2] Maragkakis M, Reczko M, et al. DIANA-microT web server: elucidating microRNA functions thr. \
+[2] Maragkakis M, Reczko M, Simossis VA, Alexiou P, Papadopoulos GL, Dalamagas T, Giannopoulos G, Goumas G, Koukis E, Kourtis K, Vergoulis T, Koziris N, Sellis T, Tsanakas P, Hatzigeorgiou AG. DIANA-microT web server: elucidating microRNA functions through target prediction. Nucleic Acids Res. 2009 Jul;37(Web Server issue):W273-6. doi: 10.1093/nar/gkp292. Epub 2009 Apr 30. PMID: 19406924; PMCID: PMC2703977. \
 [3] Chou CH, Shrestha S, et al. miRTarBase update 2018: a resource for experimentally validated microRNA-target interactions. Nucleic Acids Res. 2018 Jan 4;46(D1):D296-D302.
