@@ -170,4 +170,5 @@ print(results['posterior'])
 [1] Lewis BP, Shih IH, Jones-Rhoades MW, Bartel DP. Prediction of mammalian MicroRNA targets. Cell 2003; 115, 787-798. \
 [2] Maragkakis M, Reczko M, et al. DIANA-microT web server: elucidating microRNA functions thr. \
 [3] Chou CH, Shrestha S, et al. miRTarBase update 2018: a resource for experimentally validated microRNA-target interactions. Nucleic Acids Res. 2018 Jan 4;46(D1):D296-D302. \
+[4] Sayers, E.W., Bolton, E.E., Brister, J Rodney, e.a.: Database resources of the national center for biotechnology information. Nucleic Acids Res 50(D1), D20–D26. \
 
