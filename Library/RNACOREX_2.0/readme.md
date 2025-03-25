@@ -171,4 +171,7 @@ print(results['posterior'])
 [2] Maragkakis M, Reczko M, et al. DIANA-microT web server: elucidating microRNA functions thr. \
 [3] Chou CH, Shrestha S, et al. miRTarBase update 2018: a resource for experimentally validated microRNA-target interactions. Nucleic Acids Res. 2018 Jan 4;46(D1):D296-D302. \
 [4] Sayers, E.W., Bolton, E.E., Brister, J Rodney, e.a.: Database resources of the national center for biotechnology information. Nucleic Acids Res 50(D1), D20–D26. \
+[5] Yu Zheng, Huaxia Luo, Xueyi Teng, Xinpei Hao, Xiaoyu Yan, Yiheng Tang, Wanyu Zhang, Yuanxin Wang, Peng Zhang, Yanyan Li, Yi Zhao, Runsheng Chen, Shunmin He, NPInter v5.0: ncRNA interaction database in a new era, Nucleic Acids Research, Volume 51, Issue D1, 6 January 2023, Pages D232–D239, https://doi.org/10.1093/nar/gkac1002 \
+[6] Yanbo Yang, Dongyang Wang, Ya-Ru Miao, Xiaohong Wu, Haohui Luo, Wen Cao, Wenqian Yang, Jianye Yang, An-Yuan Guo, Jing Gong, lncRNASNP v3: an updated database for functional variants in long non-coding RNAs, Nucleic Acids Research, Volume 51, Issue D1, 6 January 2023, Pages D192–D198, https://doi.org/10.1093/nar/gkac981. \
+[7] Zhao Li, Lin Liu, Changrui Feng, Yuxin Qin, Jingfa Xiao, Zhang Zhang, Lina Ma, LncBook 2.0: integrating human long non-coding RNAs with multi-omics annotations, Nucleic Acids Research, Volume 51, Issue D1, 6 January 2023, Pages D186–D191, https://doi.org/10.1093/nar/gkac999.
 
