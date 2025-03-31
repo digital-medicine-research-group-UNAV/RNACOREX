@@ -134,6 +134,14 @@ The resulting network:
   <img src="images/network_150.png" alt="Alt Text" width="600" height="600">
 </p>
 
+`get_interactions()` function can be used for extractin the first `n` interactions in the hierarchy.
+
+```python
+
+inters = rnacorex.get_interactions(50)
+
+```
+
 The model can be used for predicting over the test set with the `predict()` function.
 
 ```python
