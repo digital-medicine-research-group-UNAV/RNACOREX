@@ -24,7 +24,7 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `tqdm` 4.65.0 +
 
-Before running the library, the `interactions.parquet` file from https://tinyurl.com/StructuralEngine have to be incorporated in the `Engine` folder. This file stores the interactions of the default engine.
+Before running the library, the `interactions.parquet` file from https://tinyurl.com/StructuralEngine have to be incorporated in the `Engine` folder. This file stores the interactions of RNACOREX's default engine.
 
 # Quick Start
 
