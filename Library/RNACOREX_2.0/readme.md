@@ -4,8 +4,6 @@ RNACOREX 2.0 is a package that extracts coregulation networks associated to a sp
 
 ## Requirements
 
-Please, read library instructions before using the library.
-
 RNACOREX implements the next libraries and versions. Correct operation of the package cannot be ensured with other versions.
 
 `Python` 3.10.15 +
@@ -25,6 +23,8 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 `scikit-learn` 1.4.2 +
 
 `tqdm` 4.65.0 +
+
+Before running the library, the `interactions.parquet` file from https://tinyurl.com/StructuralEngine have to be incorporated in `Engine` folder.
 
 # Quick Start
 
