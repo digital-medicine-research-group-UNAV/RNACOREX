@@ -8,7 +8,7 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `Python` 3.10.15 +
 
-`gtfparse` 2.5.0 + (install using pip)
+`gtfparse` 2.5.0 + (pip)
 
 `matplotlib` 3.8.4 +
 
