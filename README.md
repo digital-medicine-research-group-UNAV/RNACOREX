@@ -1,1 +1,3 @@
-Work in progress...
+### RNACOREX
+
+### RNACOREX 2.0
