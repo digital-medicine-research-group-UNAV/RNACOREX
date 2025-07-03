@@ -45,6 +45,12 @@ Files should be downloaded and placed with their default names in the next paths
 
 The TCGA Raw databases are required only to run the code of the PLOS article.
 
+Full data is downloaded from UCSC Xena Functional Genomics Browser through the next link: *https://xenabrowser.net/datapages/?hub=https://gdc.xenahubs.net:443*.
+
+Specifically, star_counts.tsv, mirna.tsv and survival.tsv are required fo each database.
+
+The files should be located inside the folder of the specific cancer in his directory: *Library/PLOS Code/TCGA Raw Data/BRCA* (for example). The file should be saved with its original name.
+
 ## Quickstart
 
 Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *PLOS Code* for the article code.
