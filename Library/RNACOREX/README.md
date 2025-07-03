@@ -31,6 +31,10 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 ## Library Instructions
 
+Due to GitHub file size limit some files required by the packages have not been uploaded. These files should be downloaded and placed in their location manually by the user before running the library.
+The Structural Engine files are compulsory to run the library. It will not work without them.
+The TCGA Raw databases are required only to run the code of the PLOS article.
+
 ## Quickstart
 
 Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *PLOS Code* for the article code.
