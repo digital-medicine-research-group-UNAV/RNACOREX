@@ -32,7 +32,18 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 ## Library Instructions
 
 Due to GitHub file size limit some files required by the packages have not been uploaded. These files should be downloaded and placed in their location manually by the user before running the library.
-The Structural Engine files are compulsory to run the library. It will not work without them.
+
+### Structural Engine Files
+
+The Structural Engine (TargetScan, DIANA, miRTarBase & TarBase) and the Gencode files are compulsory to run the library. It will not work without them.
+
+GTF file and the Structural Engine files are available for download in the next link: https://tinyurl.com/StructuralEngine. They can also be downloaded from their original sources.
+
+Files should be downloaded and placed with their default names in the next paths:
+Structural Engine Files (DIANA, MTB, TargetScan): Library/RNACOREX/StructuralEngine/
+
+### TCGA Databases
+
 The TCGA Raw databases are required only to run the code of the PLOS article.
 
 ## Quickstart
