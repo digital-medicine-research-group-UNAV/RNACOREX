@@ -1,6 +1,6 @@
 # RNACOREX
 
-RNACOREX is a package that extracts the post-transcriptional coregulation network associated to a specific phenotype. The package uses a hybrid approach, combining expert information from well-known miRNA-mRNA interaction databases such as TargetScan [1], DIANA [2] and miRTarBase [3] with an empirical analysis of expression data for developing Conditional Linear Gaussian Classifiers (CLGs) to identify the most relevant miRNA-mRNA interactions and classify new samples.
+RNACOREX is a package that extracts the post-transcriptional coregulation network associated to a specific phenotype. The package uses a hybrid approach, combining structural information from well-known miRNA-mRNA interaction databases such as TargetScan [1], DIANA [2], miRTarBase [3] and TarBase [CITE] with an empirical analysis of expression data for developing Conditional Linear Gaussian Classifiers (CLGs) to identify the most relevant miRNA-mRNA interactions and classify new samples.
 
 ## Requirements
 
