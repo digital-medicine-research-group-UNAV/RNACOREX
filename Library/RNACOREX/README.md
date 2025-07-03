@@ -8,7 +8,7 @@ Please, read library instructions before using the library.
 
 RNACOREX implements the next libraries and versions. Correct operation of the package cannot be ensured with other versions.
 
-`Python` 3.10.15 +
+`Python` 3.9 +
 
 
 `gtfparse` 2.5.0 + (install using pip)
