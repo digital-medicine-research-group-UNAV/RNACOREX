@@ -53,7 +53,7 @@ The files should be located inside the folder of the specific cancer in his dire
 
 ## Quickstart
 
-Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *PLOS Code* for the article code.
+Let start with a basic example. This example is coded in `Examples/QuickStart.ipynb`. See `PLOS Code` for the article code.
 
 Firstly, we will import the required modules.
 
