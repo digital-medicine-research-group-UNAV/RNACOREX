@@ -29,6 +29,8 @@ RNACOREX implements the next libraries and versions. Correct operation of the pa
 
 `tqdm` 4.65.0 +
 
+## Library Instructions
+
 ## Quickstart
 
 Let start with a basic example. This example is coded in *Examples/QuickStart.ipynb*. See *PLOS Code* for the article code.
