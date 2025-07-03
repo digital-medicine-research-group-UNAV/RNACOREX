@@ -37,7 +37,7 @@ Due to GitHub file size limit some files required by the packages have not been 
 
 The Structural Engine (TargetScan, DIANA, miRTarBase & TarBase) and the Gencode files are compulsory to run the library. It will not work without them.
 
-Download from https://tinyurl.com/StructuralEngine or from their original sources.
+Download from: `https://tinyurl.com/StructuralEngine`.
 
 Files should be downloaded and placed with their default names in the next paths: `Library/RNACOREX/StructuralEngine/`
 
