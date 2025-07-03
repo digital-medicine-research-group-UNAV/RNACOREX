@@ -37,10 +37,9 @@ Due to GitHub file size limit some files required by the packages have not been 
 
 The Structural Engine (TargetScan, DIANA, miRTarBase & TarBase) and the Gencode files are compulsory to run the library. It will not work without them.
 
-GTF file and the Structural Engine files are available for download in the next link: https://tinyurl.com/StructuralEngine. They can also be downloaded from their original sources.
+Download from *https://tinyurl.com/StructuralEngine* or from their original sources.
 
-Files should be downloaded and placed with their default names in the next paths:
-Structural Engine Files (DIANA, MTB, TargetScan): Library/RNACOREX/StructuralEngine/
+Files should be downloaded and placed with their default names in the next paths: *Library/RNACOREX/StructuralEngine/*
 
 ### TCGA Databases
 
