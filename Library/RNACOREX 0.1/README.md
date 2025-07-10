@@ -53,5 +53,12 @@ rnacorex.check_engines()
 conda install -c conda-forge pygraphviz
 ```
 
+---
+
+## ⚡ Quick Start
+
+Run the `Quick_Start.ipynb` notebook for an easy application of RNACOREX.
+
+Find data in `\rnacorex\data`.
 
 
