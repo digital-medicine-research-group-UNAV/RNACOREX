@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RNACOREX"
+version = "0.1.4"
+description = "RNA Coregulation Network Explorer and Classifier"
+readme = "README.md"
+authors = [
+    { name = "Oviedo-Madrid, Aitor", email = "aoviedomadr@unav.es" },
+    { name = "Gonzalez-Gomariz, Jose", email = "jgonzalezgom@unav.es" },
+    { name = "Armananzas, Ruben", email = "rarmananzas@unav.es" }
+]
+license = { file = "LICENSE" }
+dependencies = [
+    "numpy<2.0",
+    "pandas",
+    "scipy",
+    "matplotlib",
+    "networkx",
+    "joblib",
+    "tqdm",
+    "scikit-learn",
+    "gdown"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["rnacorex*"]
+
+[tool.setuptools]
+include-package-data = true
