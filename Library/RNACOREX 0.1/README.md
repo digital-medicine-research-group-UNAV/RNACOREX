@@ -2,8 +2,9 @@
 
 **RNACOREX** is a Python package for building Bayesian Network based classification models using miRNA-mRNA post-transcriptional networks. It uses curated interaction databases and conditional mutual information for identifying sets of interactions and model them using Conditional Linear Gaussian Classifiers (CLGs).
 
-PyPI: [RNACOREX on PyPI](https://pypi.org/project/RNACOREX/)
-Zenodo: [RNACOREX on Zenodo] (https://zenodo.org/records/15805336) (DOI 10.5281/zenodo.15805336)
+PyPI: [RNACOREX on PyPI](https://pypi.org/project/RNACOREX/).
+
+Zenodo: [RNACOREX on Zenodo] (https://zenodo.org/records/15805336) (DOI 10.5281/zenodo.15805336).
 
 ---
 
