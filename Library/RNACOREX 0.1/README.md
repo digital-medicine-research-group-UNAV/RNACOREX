@@ -19,9 +19,7 @@
 
 ## 📦 Installation
 
-Installation in a Python virtual environment is required. It is highly recommended to run it in a **conda environment**.
-
-Install with:
+Installation in a Python virtual environment is required. It is highly recommended to run it in a **conda environment**. Install with:
 
 ```bash
 pip install rnacorex
