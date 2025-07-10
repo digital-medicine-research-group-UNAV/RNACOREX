@@ -39,7 +39,7 @@ Engines can be downloaded using the next command:
 rnacorex.download()
 ```
 
-Manual download: [DOWNLOAD](https://tinyurl.com/RNACOREX)
+Or manually: [DOWNLOAD](https://tinyurl.com/RNACOREX)
 
 Run the next command to check if the engines have been correctly added:
 
