@@ -6,8 +6,6 @@
 
 - Zenodo: [RNACOREX on Zenodo](https://zenodo.org/records/15805336).
 
-(DOI 10.5281/zenodo.15805336)
-
 ---
 
 ## 🚀 Features
