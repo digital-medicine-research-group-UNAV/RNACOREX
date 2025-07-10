@@ -4,7 +4,8 @@
 
 PyPI: [RNACOREX on PyPI](https://pypi.org/project/RNACOREX/).
 
-Zenodo: [RNACOREX on Zenodo] (https://zenodo.org/records/15805336) (DOI 10.5281/zenodo.15805336).
+Zenodo: [RNACOREX on Zenodo](https://zenodo.org/records/15805336) 
+(DOI 10.5281/zenodo.15805336).
 
 ---
 
