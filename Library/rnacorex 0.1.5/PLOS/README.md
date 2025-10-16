@@ -85,11 +85,12 @@ Additional helper scripts used in the analysis.
 
 It is recommended to execute the scripts in the following order:
 
-`preprocessing/`
+1. `preprocessing/`
 
-`main_plos.py`
+2. `main_plos.py`
 
-`other_scripts/` (optional — for complementary results)
+3. `other_scripts/` (optional — for complementary results)
+
 
 
 
