@@ -2,7 +2,9 @@
 
 **RNACOREX** is a Python package for building Bayesian Network based classification models using miRNA-mRNA post-transcriptional networks. It uses curated interaction databases and conditional mutual information for identifying sets of interactions and model them using Conditional Linear Gaussian Classifiers (CLGs).
 
-Repository: [RNACOREX on GitHub](https://github.com/digital-medicine-research-group-UNAV/RNACOREX)
+- PyPI: [RNACOREX on PyPI](https://pypi.org/project/RNACOREX/).
+
+- Zenodo: [RNACOREX on Zenodo](https://zenodo.org/records/15805336).
 
 ---
 
@@ -13,12 +15,11 @@ Repository: [RNACOREX on GitHub](https://github.com/digital-medicine-research-gr
 - Build CLG classifiers using these interaction sets.
 - Display the post-transcriptional networks.
 
+---
 
 ## 📦 Installation
 
-Installation in a Python virtual environment is required. It is highly recommended to run it in a **conda environment**.
-
-Install with:
+Installation in a Python virtual environment is required. It is highly recommended to run it in a **conda environment**. Install with:
 
 ```bash
 pip install rnacorex
@@ -38,7 +39,7 @@ Engines can be downloaded using the next command:
 rnacorex.download()
 ```
 
-Alternatively they can be manually downloaded from: `https://tinyurl.com/RNACOREX`
+Or manually: [DOWNLOAD](https://tinyurl.com/RNACOREX)
 
 Run the next command to check if the engines have been correctly added:
 
@@ -51,6 +52,17 @@ rnacorex.check_engines()
 ```bash
 conda install -c conda-forge pygraphviz
 ```
+
+---
+
+## ⚡ Quick Start
+
+Run the `Quick_Start.ipynb` notebook for an easy application of RNACOREX.
+
+Find data in `\rnacorex\data`.
+
+
+
 
 
 
