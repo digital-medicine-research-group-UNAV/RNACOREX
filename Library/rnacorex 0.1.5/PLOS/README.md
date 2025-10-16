@@ -7,10 +7,11 @@ Below are detailed instructions to run the complete experimental workflow.
 
 ## 📂 Repository Structure
 
-preprocessing/ # Scripts for TCGA data preprocessing
-other_scripts/ # Additional scripts: figures, benchmarking, etc.
-main_plos.py # Main script to reproduce the experiments
-README.md # This file
+```text
+├── preprocessing/        # Scripts for TCGA data preprocessing
+├── other_scripts/        # Additional scripts: figures, benchmarking, etc.
+├── main_plos.py          # Main script to reproduce the experiments
+└── README.md             # This file
 
 ---
 
@@ -91,6 +92,7 @@ other_scripts/ (optional — for complementary results)
 
 🧾 Citation
 If you use this code or data in your research, please cite the associated paper
+
 
 
 
