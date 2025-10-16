@@ -89,7 +89,8 @@ It is recommended to execute the scripts in the following order:
 
 2. `main_plos.py`
 
-3. `other_scripts/` (optional — for complementary results)
+3. `other_scripts/` (optional for complementary results)
+
 
 
 
