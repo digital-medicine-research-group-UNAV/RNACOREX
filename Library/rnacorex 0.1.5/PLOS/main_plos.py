@@ -310,13 +310,13 @@ for bd in bbdd:
     df_gb = pd.DataFrame(metrics_gb)
 
     # Save all sheets to Excel
-    # with pd.ExcelWriter(f'Results/metrics_def_{bd}.xlsx') as writer:
-    #     df_rna.to_excel(writer, sheet_name='rnacorex', index=False)
-    #     df_gnn.to_excel(writer, sheet_name='gnn', index=False)
-    #     df_gker.to_excel(writer, sheet_name='gker', index=False)
-    #     df_rf.to_excel(writer, sheet_name='rf', index=False)
-    #     df_svm.to_excel(writer, sheet_name='svm', index=False)
-    #     df_gb.to_excel(writer, sheet_name='gb', index=False)
+    with pd.ExcelWriter(f'results/metrics_def_{bd}.xlsx') as writer:
+        df_rna.to_excel(writer, sheet_name='rnacorex', index=False)
+        df_gnn.to_excel(writer, sheet_name='gnn', index=False)
+        df_gker.to_excel(writer, sheet_name='gker', index=False)
+        df_rf.to_excel(writer, sheet_name='rf', index=False)
+        df_svm.to_excel(writer, sheet_name='svm', index=False)
+        df_gb.to_excel(writer, sheet_name='gb', index=False)
 
 elapsed = time.time() - start_time
 print(f"Script completed in {elapsed:.2f} seconds.")
