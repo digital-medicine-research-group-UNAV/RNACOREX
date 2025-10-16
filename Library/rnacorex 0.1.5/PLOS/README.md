@@ -71,7 +71,8 @@ Example execution:
 python main_plos.py
 ```
 
-🧩 4. Additional Scripts and Results
+## 🧩 4. Additional Scripts and Results
+
 The other_scripts/ folder contains additional utilities:
 
 Scripts to reconstruct figures and images from the paper.
@@ -80,7 +81,8 @@ Scripts to run the benchmarking with CGBayesNets (RNACOREX implementation).
 
 Additional helper scripts used in the analysis.
 
-📘 Recommended Execution Order
+## 📘 Recommended Execution Order
+
 It is recommended to execute the scripts in the following order:
 
 preprocessing/
@@ -88,6 +90,7 @@ preprocessing/
 main_plos.py
 
 other_scripts/ (optional — for complementary results)
+
 
 
 
