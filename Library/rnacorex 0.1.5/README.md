@@ -57,9 +57,10 @@ conda install -c conda-forge pygraphviz
 
 ## ⚡ Quick Start
 
-Run the `Quick_Start.ipynb` notebook for an easy application of RNACOREX.
+Run the `Quick_Start.ipynb` notebook in `quickstart` folder for an easy application of RNACOREX.
 
 Find data in `\rnacorex\data`.
+
 
 
 
