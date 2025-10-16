@@ -81,6 +81,8 @@ The `other_scripts/` folder contains additional utilities:
 
 - Additional helper scripts used in the analysis.
 
+Data, figures and results are expected to be stored in three folders: `data\`, `figures\` and `results\`.
+
 ## 📘 Recommended Execution Order
 
 It is recommended to execute the scripts in the following order:
@@ -90,6 +92,7 @@ It is recommended to execute the scripts in the following order:
 2. `main_plos.py`
 
 3. `other_scripts/` (optional for complementary results)
+
 
 
 
