@@ -75,7 +75,7 @@ python main_plos.py
 
 The `other_scripts/` folder contains additional utilities:
 
-Scripts to reconstruct figures and images from the paper.
+\item Scripts to reconstruct figures and images from the paper.
 
 Scripts to run the benchmarking with CGBayesNets (RNACOREX implementation).
 
@@ -90,6 +90,7 @@ It is recommended to execute the scripts in the following order:
 2. `main_plos.py`
 
 3. `other_scripts/` (optional — for complementary results)
+
 
 
 
