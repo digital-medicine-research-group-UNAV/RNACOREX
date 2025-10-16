@@ -83,9 +83,9 @@ def preprocessing_rnacorex(bbdd):
 
     sys.path.append(os.path.abspath(os.path.join(os.getcwd(), '../../')))
 
-    data_mrna_path = os.path.join('../../../../Data/TCGA RAW/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.star_counts.tsv')
-    data_mirna_path = os.path.join('../../../../Data/TCGA RAW/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.mirna.tsv')
-    data_survival_path = os.path.join('../../../../Data/TCGA RAW/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.survival.tsv')
+    data_mrna_path = os.path.join('TCGA RAW/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.star_counts.tsv')
+    data_mirna_path = os.path.join('TCGA RAW/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.mirna.tsv')
+    data_survival_path = os.path.join('TCGA RAW/'+bbdd.upper()+'/TCGA-'+bbdd.upper()+'.survival.tsv')
 
     data_mrna = pd.read_csv(data_mrna_path, sep = '\t')
     data_mirna = pd.read_csv(data_mirna_path, sep = '\t')
@@ -190,6 +190,6 @@ def preprocessing_rnacorex(bbdd):
 
     data_def.to_csv('../data/data_plos_'+bbdd+'_lognorm.csv') # Log-normalized data.
 
-    # deg_results.to_csv('../Results/deg_results_'+bbdd+'_pydeseq.csv') # DEG results from pydeseq2.
+    # deg_results.to_csv('../results/deg_results_'+bbdd+'_pydeseq.csv') # DEG results from pydeseq2.
 
-    # normalized_pydeseq.to_csv('Data/data_plos_'+bbdd+'_pydeseq.csv') # Normalized data from pydeseq2.
+    # normalized_pydeseq.to_csv('../data/data_plos_'+bbdd+'_pydeseq.csv') # Normalized data from pydeseq2.
