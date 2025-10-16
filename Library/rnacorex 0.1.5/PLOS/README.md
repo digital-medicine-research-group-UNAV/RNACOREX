@@ -26,9 +26,9 @@ These scripts:
 
 > ⚠️ **Important:**  
 > The raw TCGA data **are not included in this repository** due to GitHub size limitations.  
-> They must be downloaded manually from the official GDC portal:
+> They can be manually accessed in the next link:
 
-🔗 [https://portal.gdc.cancer.gov/](https://portal.gdc.cancer.gov/)
+🔗 [UCSC Xena](https://xenabrowser.net/datapages/?hub=https://gdc.xenahubs.net:443)
 
 ---
 
@@ -42,21 +42,19 @@ The following TCGA datasets are required:
 
 These data must be obtained for the following 13 TCGA cohorts:
 
-1. TCGA-BRCA  
-2. TCGA-LUAD  
-3. TCGA-LUSC  
-4. TCGA-COAD  
-5. TCGA-READ  
-6. TCGA-KIRC  
-7. TCGA-KIRP  
-8. TCGA-LGG  
-9. TCGA-GBM  
-10. TCGA-STAD  
-11. TCGA-THCA  
-12. TCGA-HNSC  
-13. TCGA-OV  
-
-> Once downloaded, place the raw data in the directories expected by the scripts in `preprocessing/`.
+1. TCGA-BRCA
+2. TCGA-COAD
+3. TCGA-HNSC
+4. TCGA-KIRC
+5. TCGA-LAML
+6. TCGA-LGG
+7. TCGA-LIHC
+8. TCGA-LUAD  
+9. TCGA-LUSC  
+10. TCGA-SKCM  
+11. TCGA-SARC     
+12. TCGA-STAD  
+13. TCGA-UCEC 
 
 ---
 
@@ -71,14 +69,13 @@ Example execution:
 
 ```bash
 python main_plos.py
-This script will generate the experimental results in the output folders specified in the code (check comments for paths and parameter settings).
 
 🧩 4. Additional Scripts and Results
 The other_scripts/ folder contains additional utilities:
 
 Scripts to reconstruct figures and images from the paper.
 
-Scripts to run the benchmarking with CGBayesNets (Python implementation).
+Scripts to run the benchmarking with CGBayesNets (RNACOREX implementation).
 
 Additional helper scripts used in the analysis.
 
@@ -91,8 +88,6 @@ main_plos.py
 
 other_scripts/ (optional — for complementary results)
 
-🧾 Citation
-If you use this code or data in your research, please cite the associated paper
 
 
 
