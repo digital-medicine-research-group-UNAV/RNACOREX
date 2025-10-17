@@ -1,0 +1,51 @@
+# MATLAB CODE
+
+dbnames = {'lgg', 'lihc', 'luad', 'lusc', 'skcm', 'sarc', 'stad', 'ucec'}
+
+% Preallocate storage for outputs (TRAIN)
+allNet = cell(numel(dbnames),1);
+allAUC = zeros(numel(dbnames),1);
+allACC = zeros(numel(dbnames),1);
+
+% Preallocate storage for outputs (TEST)
+allACC_test = zeros(numel(dbnames),1);
+allAUC_test = zeros(numel(dbnames),1);
+
+for i = 1:numel(dbnames)
+    db = dbnames{i};
+    % Construct your file name dynamically
+    fileName = ['RNACOREX_data/data_train_' lower(db) '_lognorm.csv'];  
+    fileName_test = ['RNACOREX_data/data_test_' lower(db) '_lognorm.csv'];
+
+    % Run HybridBN (TRAIN)
+    [Net, auc, raw_auc, acc_train] = HybridBN(fileName, 'Class', upper(db), ',');
+
+    % Run HybridBN_CV (TEST)
+    % Net = HybridBN_CV(fileName, 'Class', upper(db), ',');    
+    [testData, testCols] = RCSVLoad(fileName_test, false, ',')
+    Net.data = testData
+    Net.cols = testCols
+    [acc_test, p, z] = PredictPheno(Net, true)
+    % fprintf('DB: %s  Acc: %.2f\n', db, acc);
+
+    phncol = strmatch('Class', testCols, 'exact');
+    doAUC = true;
+    [convexhullAUC, RawAUC, classAcc] = AUCWorker(acc_test,p,z,testData(:,phncol), doAUC);
+    
+    % Store outputs (TRAIN)
+    allNet{i} = Net;
+    allAUC(i) = raw_auc;
+    allACC(i) = acc_train;
+
+    % Store outputs (TEST)
+    allACC_test(i) = acc_test;
+    allAUC_test(i) = RawAUC;
+
+    % Save after each iteration to avoid losing data if the session dies
+    % (TRAIN)
+    save('HybridBN_results.mat','allNet','allAUC','allACC','dbnames');
+
+    % Save after each iteration to avoid losing data if the session dies
+    % (TEST)
+    save('HybridBN_test_results.mat','allACC_test','allAUC_test', 'dbnames');
+end
