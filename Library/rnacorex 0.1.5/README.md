@@ -4,7 +4,7 @@
 
 - PyPI: [RNACOREX on PyPI](https://pypi.org/project/RNACOREX/).
 
-- Zenodo: [RNACOREX on Zenodo](https://zenodo.org/records/15805336).
+- Zenodo: [RNACOREX on Zenodo](https://zenodo.org/records/17368843).
 
 ---
 
@@ -60,6 +60,7 @@ conda install -c conda-forge pygraphviz
 Run the `Quick_Start.ipynb` notebook in `quickstart` folder for an easy application of RNACOREX.
 
 Find data in `data` folder.
+
 
 
 
