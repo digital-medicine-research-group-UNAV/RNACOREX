@@ -6,7 +6,7 @@
 
 - Zenodo: [RNACOREX on Zenodo](https://zenodo.org/records/17368843).
 
-Using `Python <= 3.9` is strongly recommended.
+Using `Python <= 3.9` and `numpy <= 2` is strongly recommended.
 
 ---
 
@@ -62,6 +62,7 @@ conda install -c conda-forge pygraphviz
 Run the `Quick_Start.ipynb` notebook in `quickstart` folder for an easy application of RNACOREX.
 
 Find data in `data` folder.
+
 
 
 
