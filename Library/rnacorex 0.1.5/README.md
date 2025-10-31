@@ -63,6 +63,10 @@ Run the `Quick_Start.ipynb` notebook in `quickstart` folder for an easy applicat
 
 Find data in `data` folder.
 
+> **Note:** The input matrix must follow these ID formats:  
+> - **mRNAs** should be identified using **Ensembl gene IDs** (e.g. `ENSG00000139618`) **without version numbers** (❌ `ENSG00000139618.12`).  
+> - **miRNAs** should be named using **miRBase names in lowercase**, e.g. `hsa-mir-21` or `mmu-mir-125b`.
+
 
 
 
