@@ -74,7 +74,7 @@ rnacorex.download()
 
 rnacorex.check_engines()
 
-# Charge data
+# Load data
 
 data = pd.read_csv(f'data/data_plos_brca.csv', sep = ',', index_col = 0)
 
