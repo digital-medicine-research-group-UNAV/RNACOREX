@@ -61,6 +61,47 @@ Run the `Quick_Start.ipynb` notebook in `quickstart` folder for an easy applicat
 
 Find data in `data` folder.
 
+```python
+import rnacorex
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Download the required engines.
+
+rnacorex.download()
+
+# Check if the engines are installed correctly.
+
+rnacorex.check_engines()
+
+# Charge data
+
+data = pd.read_csv(f'data/data_plos_brca.csv', sep = ',', index_col = 0)
+
+X = data.drop('Class', axis = 1)
+
+y = data['Class']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)
+
+# Initialize model
+
+mrnc = rnacorex.MRNC(n_con=50, precision = 20)
+
+# Fit model
+
+mrnc.fit(X_train, y_train)
+
+# Load the network.
+
+mrnc.get_network()
+mrnc.G_
+
+# Predict on new data
+
+mrnc.predict(X_test)
+```
+
 👉 **Note:** The input matrix must follow these ID formats:
 
 - **mRNAs** should be identified using **Ensembl gene IDs** (e.g. `ENSG00000139618`) **without version numbers** (❌ `ENSG00000139618.12`).
