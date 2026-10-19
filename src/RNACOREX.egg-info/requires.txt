@@ -1,0 +1,9 @@
+numpy<2.0
+pandas
+scipy
+matplotlib
+networkx
+joblib
+tqdm
+scikit-learn
+gdown

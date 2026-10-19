@@ -1,0 +1,15 @@
+LICENSE.txt
+MANIFEST.in
+README.md
+pyproject.toml
+src/RNACOREX.egg-info/PKG-INFO
+src/RNACOREX.egg-info/SOURCES.txt
+src/RNACOREX.egg-info/dependency_links.txt
+src/RNACOREX.egg-info/requires.txt
+src/RNACOREX.egg-info/top_level.txt
+src/rnacorex/CLGStructure.py
+src/rnacorex/FuncInformation.py
+src/rnacorex/StrucInformation.py
+src/rnacorex/__init__.py
+src/rnacorex/miRNetClassifier.py
+src/rnacorex/utils.py
