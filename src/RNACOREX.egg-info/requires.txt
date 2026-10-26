@@ -1,9 +1,13 @@
 numpy<2.0
 pandas
-scipy
+scipy==1.15.2
 matplotlib
 networkx
 joblib
 tqdm
 scikit-learn
 gdown
+pygam
+pybnesian
+pyarrow<26.0
+pygraphviz

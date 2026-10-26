@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "RNACOREX"
-version = "0.1.5"
+version = "0.2.1"
 description = "RNA Coregulation Network Explorer and Classifier"
 readme = "README.md"
 authors = [
@@ -16,13 +16,17 @@ license = { file = "LICENSE" }
 dependencies = [
     "numpy<2.0",
     "pandas",
-    "scipy",
+    "scipy==1.15.2",
     "matplotlib",
     "networkx",
     "joblib",
     "tqdm",
     "scikit-learn",
-    "gdown"
+    "gdown",
+    "pygam",
+    "pybnesian",
+    "pyarrow<26.0",
+    "pygraphviz"
 ]
 
 [tool.setuptools.packages.find]

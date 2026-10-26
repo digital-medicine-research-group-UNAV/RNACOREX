@@ -9,7 +9,13 @@ src/RNACOREX.egg-info/requires.txt
 src/RNACOREX.egg-info/top_level.txt
 src/rnacorex/CLGStructure.py
 src/rnacorex/FuncInformation.py
+src/rnacorex/Functionalities.py
+src/rnacorex/Inference.py
+src/rnacorex/InitModel.py
+src/rnacorex/RNACOREX.py
 src/rnacorex/StrucInformation.py
 src/rnacorex/__init__.py
-src/rnacorex/miRNetClassifier.py
-src/rnacorex/utils.py
+src/rnacorex/models/LGBN.py
+src/rnacorex/models/SLGBN.py
+src/rnacorex/models/SPBN.py
+src/rnacorex/models/__init__.py

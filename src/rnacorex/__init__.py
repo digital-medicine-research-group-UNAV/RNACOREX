@@ -1,6 +1,5 @@
-from .miRNetClassifier import MRNC
-from .utils import check_engines, download
+from .RNACOREX import RNACOREX
 
 __all__ = [
-    "MRNC"
+    "RNACOREX"
 ]
