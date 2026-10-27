@@ -84,7 +84,7 @@ Install RNACOREX 0.2 from the appropriate distribution source. If the release is
 For a local development checkout:
 
 ```bash
-python -m pip install -e /path/to/RNACOREX-git
+python -m pip install -e /path/to/RNACOREX
 ```
 
 Replace `/path/to/RNACOREX-git` with the actual path to the RNACOREX 0.2 source directory.
