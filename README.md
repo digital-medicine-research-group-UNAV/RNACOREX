@@ -13,8 +13,6 @@ This is the repository of the **RNA Co-Regulatory Network Explorer and Classifie
 
 ---
 
----
-
 ## New Functionalities
 
 - Includes all kind of interactions among mRNAs, miRNAs and lncRNAs.
