@@ -18,5 +18,19 @@ This is the repository of the **RNA Co-Regulatory Network Explorer and Classifie
 
 ---
 
+## 📦 Installation
+
 > [!IMPORTANT]
 > **Automatic Engine Setup:** When importing RNACOREX, the package automatically checks whether `interactions.parquet` is present in the required `Engine/` directory. If the file is missing, it will be downloaded automatically.
+
+The engine can also be downloaded using the next command:
+
+```bash
+rnacorex.download()
+```
+
+Run the next command to check if the engines have been correctly added:
+
+```bash
+rnacorex.check_engines()
+```
