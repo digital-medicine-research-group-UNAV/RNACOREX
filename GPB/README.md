@@ -98,3 +98,5 @@ For reliable reproduction of the reported results:
 3. Execute the scripts in the prescribed order.
 
 The scripts, datasets, fitted models, and prediction outputs together define the computational workflow used to reproduce the experiments described in the paper.
+
+Execution-time comparisons were obtained by measuring individual stages of the model-fitting process, which required modifications to the RNACOREX source code. These modifications are not included in this repository but can be requested from the authors.
