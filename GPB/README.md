@@ -11,8 +11,11 @@ The repository is organized as follows:
 ├── Experiments/
 │   ├── fit_models_v1.py
 │   ├── fit_models_v2.py
-│   ├── spbn.py
-│   └── predict.py
+│   ├── predictions_v1.py
+│   ├── predictions_v2.py
+│   └── spbn.py
+├── Metrics/
+│   └── ...
 ├── Models/
 │   └── ...
 └── README.md
