@@ -49,8 +49,6 @@ import pandas as pd
 
 # Load data
 
-... LOAD DATA ...
-
 # Initialize model
 
 rnacorex = RNACOREX(n_con=40)
