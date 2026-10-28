@@ -89,13 +89,13 @@ rnacorex.display(G)
 
 ### Maximum Probability Network
 
-The maximum probability network can be obtained and visualized using `rnacorex.mpc()`. The `k` parameter selects the model corresponding to the desired value, while `c` and `th` control the selected configuration and threshold.
+The maximum probability network can be obtained and visualized using `rnacorex.mpc()`.
 
 ```python
 maps = rnacorex.mpc(
     display=True,
     c=0,
-    k=20,
+    k=40,
     th=0.25
 )
 ```
