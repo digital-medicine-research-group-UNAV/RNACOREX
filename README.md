@@ -87,16 +87,20 @@ rnacorex.display(G)
 
 ### Maximum Probability Network
 
-The maximum probability network can be obtained and visualized using `rnacorex.mpc()`.
+The maximum probability configuration can be obtained and visualized using `rnacorex.mpc()`.
 
 ```python
-maps = rnacorex.mpc(
+mpc = rnacorex.mpc(
     display=True,
     c=0,
     k=40,
     th=0.25
 )
 ```
+
+'c': Class to visualize, compared with the global configuration.
+'k': Number of interactions to include.
+'th': Controls the sensitivity to deviations in node colors.
 
 **Output examples:**
 
