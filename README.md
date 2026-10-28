@@ -99,7 +99,9 @@ mpc = rnacorex.mpc(
 ```
 
 `c`: Class to visualize, compared with the global configuration.
+
 `k`: Number of interactions to include.
+
 `th`: Controls the sensitivity to deviations in node colors.
 
 **Output examples:**
