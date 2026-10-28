@@ -49,13 +49,7 @@ import pandas as pd
 
 # Load data
 
-data_train = pd.read_csv(f"GPB/Data/train_brca_lognorm.csv", index_col=0)
-data_test = pd.read_csv(f"GPB/Data/test_brca_lognorm.csv", index_col=0)
-
-X_train = data_train.drop("Class", axis=1)
-y_train = data_train["Class"]
-X_test = data_test.drop("Class", axis=1)
-y_test = data_test["Class"]
+... LOAD DATA ...
 
 # Initialize model
 
