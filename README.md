@@ -18,6 +18,12 @@ This is the repository of the **RNA Co-Regulatory Network Explorer and Classifie
 
 ## 📦 Installation
 
+Until RNACOREX is available on PyPI, it can be installed locally from the root directory of the cloned repository:
+
+```bash
+python -m pip install -e .
+```
+
 > [!IMPORTANT]
 > **Automatic Engine Setup:** When importing RNACOREX, the package automatically checks whether `interactions.parquet` is present in the required `Engine/` directory. If the file is missing, it will be downloaded automatically.
 
