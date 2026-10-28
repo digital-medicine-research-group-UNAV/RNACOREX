@@ -21,7 +21,7 @@ The repository is organized as follows:
 └── README.md
 ```
 
-- `Data/` contains the datasets used in the experiments.
+- `Data/` contains the datasets used in the experiments. Data is stored after preprocessing. Please contact the authors for raw data and preprocessing scripts.
 - `Experiments/` contains the scripts for fitting the models and generating predictions.
 - `Models/` is the output directory for fitted models. It is created and populated when the corresponding scripts are executed. Within this directory, a separate subdirectory is used for each dataset (e.g., `Models/BRCA/`).
 - `Metrics/` is the output directory for prediction metrics. It is created and populated when the corresponding scripts are executed.
