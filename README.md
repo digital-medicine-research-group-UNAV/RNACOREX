@@ -85,7 +85,7 @@ rnacorex.display(G)
 
 **Example output:**
 
-![Raw network visualization](docs/images/raw_network.png)
+![Raw network visualization](docs/images/raw_network.svg)
 
 ### Maximum Probability Network
 
@@ -102,7 +102,7 @@ maps = rnacorex.mpc(
 
 **Example output:**
 
-![Maximum probability network visualization](docs/images/maximum_probability_network.png)
+![Maximum probability network visualization](docs/images/maximum_probability_network.svg)
 
 
 ## How to cite?
