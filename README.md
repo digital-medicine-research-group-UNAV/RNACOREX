@@ -1,20 +1,16 @@
 (UNDER DEVELOPMENT)
 
-This is the repository of the **RNA Co-Regulatory Network Explorer and Classifier (RNACOREX)** package, developed in the DATAI institute of Universidad de Navarra. **RNACOREX** is a Python package for building Bayesian Network based classification models using miRNA-mRNA post-transcriptional networks. It uses curated interaction databases and conditional mutual information for identifying sets of interactions and model them using Conditional Linear Gaussian Classifiers (CLGs).
+This is the repository of the **RNA Co-Regulatory Network Explorer and Classifier (RNACOREX)** package, developed in the DATAI institute of Universidad de Navarra. **RNACOREX** is a Python package for building Bayesian Network based classification models using post-transcriptional networks with heterogeneous RNA molecules. It uses curated interaction databases and conditional mutual information for identifying sets of interactions and models them using different continuous Bayesian network classifiers.
 
 ## 🚀 Features
 
 - Extracts structural and functional scores from RNA interactions.
-- Identify post-transcriptional coregulation networks associated with different phenotypes.
-- Build Bayesian network classifiers using these interaction sets.
-- Display the post-transcriptional networks.
-
-## New Functionalities
-
-- Includes all kind of interactions among mRNAs, miRNAs and lncRNAs.
-- Models nonlinear dependencies with SPBNs and SLGBNs.
-- Allow multiclass classification and partial inference.
-- Displays post-transcriptional networks and maximum probability networks.
+- Identifies post-transcriptional coregulation networks associated with different phenotypes.
+- Supports interactions among mRNAs, miRNAs, and lncRNAs.
+- Builds Bayesian network classifiers using RNA interaction sets.
+- Models nonlinear dependencies using SPBNs and SLGBNs.
+- Supports multiclass classification and partial inference.
+- Visualizes post-transcriptional networks and maximum probability networks (MPNs).
 
 ## 📦 Installation
 
@@ -71,6 +67,42 @@ rnacorex.predict(X_test)
 
 - **mRNAs** should be identified using **Ensembl gene IDs** (e.g. `ENSG00000139618`) **without version numbers** (❌ `ENSG00000139618.12`).
 - **miRNAs** should be named using **miRBase names in lowercase**, e.g. `hsa-mir-21` or `hsa-mir-125b-3p`.
+
+
+## 🕸️ Network Visualization
+
+RNACOREX provides functions to visualize the inferred post-transcriptional networks and their maximum probability counterparts.
+
+### Raw Network
+
+The inferred network can be visualized directly using `rnacorex.display()`:
+
+```python
+G = rnacorex.model_['G']
+
+rnacorex.display(G)
+```
+
+**Example output:**
+
+![Raw network visualization](docs/images/raw_network.png)
+
+### Maximum Probability Network
+
+The maximum probability network can be obtained and visualized using `rnacorex.mpc()`. The `k` parameter selects the model corresponding to the desired value, while `c` and `th` control the selected configuration and threshold.
+
+```python
+maps = rnacorex.mpc(
+    display=True,
+    c=0,
+    k=20,
+    th=0.25
+)
+```
+
+**Example output:**
+
+![Maximum probability network visualization](docs/images/maximum_probability_network.png)
 
 
 ## How to cite?
