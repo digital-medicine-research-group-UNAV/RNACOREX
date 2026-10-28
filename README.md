@@ -16,8 +16,6 @@ This is the repository of the **RNA Co-Regulatory Network Explorer and Classifie
 - Allow multiclass classification and partial inference.
 - Displays post-transcriptional networks and maximum probability networks.
 
----
-
 ## 📦 Installation
 
 > [!IMPORTANT]
@@ -34,8 +32,6 @@ Run the next command to check if the engines have been correctly added:
 ```bash
 rnacorex.check_engines()
 ```
-
----
 
 ## ⚡ Quick Start
 
