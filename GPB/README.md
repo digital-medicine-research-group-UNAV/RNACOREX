@@ -28,7 +28,7 @@ The repository is organized as follows:
   
 The fitted models and prediction results contain the information required to reproduce the figures reported in the paper.
 
-## Requirements
+## ⚙️ Requirements
 
 The experiments require two versions of RNACOREX:
 
@@ -37,7 +37,7 @@ The experiments require two versions of RNACOREX:
 
 The two versions must be used in separate Python environments to avoid dependency conflicts and ensure that each script runs with the intended implementation.
 
-## Installation
+## 📦 Installation
 
 We recommend using separate Conda environments for the two RNACOREX versions.
 
@@ -67,7 +67,7 @@ Run the scripts in the following order, using the appropriate Conda environment:
 
 The fitting scripts must be run before the corresponding prediction scripts.
 
-## Model Organization and Outputs
+## 🗂️ Model Organization and Outputs
 
 The Model output directory is organized by dataset:
 
@@ -89,7 +89,7 @@ In Models/ a separate directory is used for each dataset. The directory contents
 
 The scripts also generate prediction metrics as individual CSV files in `Metrics/`.
 
-## Reproducibility Notes
+## 🔬 Reproducibility Notes
 
 For reliable reproduction of the reported results:
 
