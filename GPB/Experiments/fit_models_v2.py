@@ -1,5 +1,6 @@
 import pandas as pd
 import pickle
+import rnacorex
 from rnacorex import RNACOREX
 import os
 

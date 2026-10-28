@@ -15,7 +15,7 @@ src/rnacorex/InitModel.py
 src/rnacorex/RNACOREX.py
 src/rnacorex/StrucInformation.py
 src/rnacorex/__init__.py
+src/rnacorex/utils.py
 src/rnacorex/models/LGBN.py
 src/rnacorex/models/SLGBN.py
 src/rnacorex/models/SPBN.py
-src/rnacorex/models/__init__.py

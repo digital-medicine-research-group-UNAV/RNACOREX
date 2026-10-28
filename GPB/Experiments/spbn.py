@@ -17,7 +17,9 @@ datasets = [
 
 ks = range(2,121)
 
-output_file = "spbn_results.csv"
+os.makedirs("Metrics", exist_ok=True)
+
+output_file = os.path.join("Metrics", "spbn_results.csv")
 
 if os.path.exists(output_file):
     os.remove(output_file)
