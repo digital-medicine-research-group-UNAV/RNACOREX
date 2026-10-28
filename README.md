@@ -34,3 +34,43 @@ Run the next command to check if the engines have been correctly added:
 ```bash
 rnacorex.check_engines()
 ```
+
+---
+
+## ⚡ Quick Start
+
+Run the `quickstart.py` script and `Quick_Start.ipynb` notebook in `quickstart` folder for easy applications of RNACOREX.
+
+Find data in `data` folder.
+
+```python
+from rnacorex import RNACOREX
+import pandas as pd
+
+# Load data
+
+data_train = pd.read_csv(f"GPB/Data/train_brca_lognorm.csv", index_col=0)
+data_test = pd.read_csv(f"GPB/Data/test_brca_lognorm.csv", index_col=0)
+
+X_train = data_train.drop("Class", axis=1)
+y_train = data_train["Class"]
+X_test = data_test.drop("Class", axis=1)
+y_test = data_test["Class"]
+
+# Initialize model
+
+rnacorex = RNACOREX(n_con=40)
+
+# Fit model
+
+rnacorex.fit(X_train, y_train)
+
+# Load the network.
+
+G = rnacorex.model_['G']
+
+# Predict on new data
+
+rnacorex.predict(X_test)
+
+```
