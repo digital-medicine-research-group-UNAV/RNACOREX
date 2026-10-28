@@ -83,7 +83,7 @@ G = rnacorex.model_['G']
 rnacorex.display(G)
 ```
 
-**Example output:**
+**Output examples:**
 
 ![Raw network visualization](docs/images/Net_2x2.svg)
 
@@ -100,7 +100,7 @@ maps = rnacorex.mpc(
 )
 ```
 
-**Example output:**
+**Output examples:**
 
 ![Maximum probability network visualization](docs/images/MPC_2x2.svg)
 
