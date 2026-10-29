@@ -5,7 +5,29 @@ from tqdm import tqdm
 
 def consistency_index(filtered_engine, labels):
 
-    # Calculate consistency indices for each pair of engines.
+    """
+    Calculates consistency indices between pairs of interaction engines
+    based on the overlap of their predicted gene interactions.
+
+    For each pair of engines, computes the number of interactions in the
+    larger set, the number of shared interactions, and a consistency
+    index adjusted for the total number of possible gene pairs. Negative
+    values are set to zero, and the resulting matrix is normalized by
+    the sum of its elements.
+
+    Args:
+        filtered_engine (pd.DataFrame): Interaction database containing
+            the columns 'Engine', 'Gene1', and 'Gene2'.
+        labels (list): List of gene identifiers used to determine the
+            total number of possible gene pairs.
+
+    Returns:
+        tuple: A tuple containing:
+            - np.ndarray: Normalized consistency index matrix comparing
+              pairs of engines.
+            - list: Names of the interaction engines in the order used
+              in the matrix.
+    """
 
     engines = list(filtered_engine['Engine'].unique())
 
@@ -76,6 +98,26 @@ def engine_dags(filtered_engine, engines, labels):
 
 
 def structural_information(dags, engines, ci, labels):
+
+    """
+    Constructs adjacency matrices for each interaction engine based on
+    the interactions in the filtered database.
+
+    For each engine, creates a binary adjacency matrix using the provided
+    gene labels as node indices and marks the corresponding entries for
+    each interaction. Each matrix is stored alongside its engine name.
+
+    Args:
+        filtered_engine (pd.DataFrame): Filtered interaction database
+            containing the columns 'Engine', 'Gene1', and 'Gene2'.
+        engines (list): List of interaction engine names to process.
+        labels (list): List of gene identifiers defining the node order
+            in the adjacency matrices.
+
+    Returns:
+        list: A list of pairs, each containing a binary adjacency matrix
+        (np.ndarray) and the corresponding engine name.
+    """
     
     smi = np.zeros((len(labels), len(labels)))
     contribution_mask = np.zeros_like(smi, dtype=bool) 
@@ -102,6 +144,29 @@ def structural_information(dags, engines, ci, labels):
 
 
 def SMI(X, info, engine):
+
+    """
+    Computes the Structural Mutual Information (SMI) matrix from multiple
+    interaction engines and their consistency indices.
+
+    Extracts gene labels from the metadata, calculates the consistency
+    indices between interaction engines, constructs an adjacency matrix
+    for each engine, and uses these matrices and consistency indices to
+    compute the structural information matrix.
+
+    Args:
+        X (pd.DataFrame): Gene expression dataset, with samples as rows
+            and gene identifiers as columns.
+        info (dict): Dictionary containing gene metadata, including the
+            'labels' key with the ordered gene identifiers.
+        engine (pd.DataFrame): Interaction database containing the
+            interactions and engine identifiers.
+
+    Returns:
+        tuple: A tuple containing:
+            - pd.DataFrame: The input expression dataset.
+            - np.ndarray: Structural Mutual Information matrix.
+    """
 
     labels = info.get('labels')
 

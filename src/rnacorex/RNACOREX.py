@@ -56,7 +56,13 @@ class RNACOREX(BaseEstimator, ClassifierMixin):
 
         self.initialize_time_ = end_initialize-start_initialize
 
+        start_FMI = time.perf_counter()
+
         self.FMI_ = FuncInformation.FMI2(self.X_, y, self.SMI_, precision = self.precision)
+
+        end_FMI = time.perf_counter()
+
+        self.FMI_time_ = end_FMI-start_FMI
 
         # Define how to develop the model (single n, list or tuple)
 

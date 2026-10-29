@@ -4,22 +4,35 @@ import pandas as pd
 
 
 def get_interactions(smi, fmi, mode, weight, ties, info, n):
+
     """
-    Extrae las interacciones de la red, ordenándolas según SMI y FMI
-    de acuerdo al modo y criterio de desempate.
+    Extracts and ranks network interactions based on Structural Mutual
+    Information (SMI) and Functional Mutual Information (FMI).
+
+    Identifies interactions with nonzero SMI or FMI values, associates
+    each interaction with its node names and types, and sorts the
+    interactions according to the selected ranking mode and tie-breaking
+    criterion.
 
     Args:
-        smi (np.ndarray): Matriz de Structure Mutual Information.
-        fmi (np.ndarray): Matriz de Function Mutual Information.
-        info (dict): Diccionario con claves "names" y "types" de los nodos.
-        n (int): Número de interacciones a retornar.
-        mode (str, opcional): 'structural', 'functional', 'weighted', 'alternating' (por defecto)
-        weight (float, opcional): Peso de SMI en modo 'weighted' (0–1)
-        ties (str, opcional): 'isolated', 'connected', 'functional' (por defecto: 'isolated')
+        smi (np.ndarray): Structural Mutual Information matrix.
+        fmi (np.ndarray): Functional Mutual Information matrix.
+        mode (str): Ranking strategy. Options are 'structural',
+            'functional', 'weighted', and 'alternating'.
+        weight (float): Weight assigned to SMI in the combined score
+            for weighted ranking. The FMI weight is 1 - weight.
+        ties (str): Tie-breaking criterion. Options are 'isolated',
+            'connected', and 'functional'.
+        info (dict): Dictionary containing node metadata, including
+            'names' and 'types'.
+        n (int): Maximum number of top-ranked interactions to return.
 
     Returns:
-        pd.DataFrame: DataFrame con las interacciones ordenadas.
+        pd.DataFrame: DataFrame containing the top-ranked interactions
+        with columns 'Node1', 'Node2', 'Type1', 'Type2', 'SMI', and
+        'FMI'.
     """
+
     n_nodes = smi.shape[0]
     # Calcular grado de nodos (para desempates)
     row_counts = np.count_nonzero(smi, axis=1)
@@ -106,6 +119,26 @@ def get_interactions(smi, fmi, mode, weight, ties, info, n):
 
 
 def display(G, save_format = None):
+
+    """
+    Displays a network graph using a Graphviz-based layout and optionally
+    saves the visualization to a file.
+
+    Draws the graph nodes using their assigned colors, displays edges and
+    node labels, and hides the plot axes. If a save format is specified,
+    the figure is saved to a file named 'network' with the corresponding
+    extension.
+
+    Args:
+        G (nx.Graph or nx.DiGraph or nx.MultiDiGraph): NetworkX graph to
+            visualize. Each node must have a 'color' attribute.
+        save_format (str or None, optional): File format in which to save
+            the figure, such as 'png', 'pdf', or 'svg'. If None, the
+            figure is displayed without being saved. Defaults to None.
+
+    Returns:
+        None
+    """
     
     import matplotlib.pyplot as plt
     from networkx.drawing.nx_agraph import graphviz_layout
@@ -158,29 +191,41 @@ def display(G, save_format = None):
 
 
 def get_interactions(smi, fmi, mode, weight, ties, info, n):
+
     """
-    Extrae las interacciones de la red, ordenándolas según SMI y FMI
-    de acuerdo al modo y criterio de desempate.
+    Extracts and ranks network interactions based on Structural Mutual
+    Information (SMI) and Functional Mutual Information (FMI).
+
+    Identifies interactions with nonzero SMI or FMI values, associates
+    each interaction with its node names and types, and sorts the
+    interactions according to the selected ranking mode and tie-breaking
+    criterion.
 
     Args:
-        smi (np.ndarray): Matriz de Structure Mutual Information.
-        fmi (np.ndarray): Matriz de Function Mutual Information.
-        info (dict): Diccionario con claves "names" y "types" de los nodos.
-        n (int): Número de interacciones a retornar.
-        mode (str, opcional): 'structural', 'functional', 'weighted', 'alternating' (por defecto)
-        weight (float, opcional): Peso de SMI en modo 'weighted' (0–1)
-        ties (str, opcional): 'isolated', 'connected', 'functional' (por defecto: 'isolated')
+        smi (np.ndarray): Structural Mutual Information matrix.
+        fmi (np.ndarray): Functional Mutual Information matrix.
+        mode (str): Ranking strategy. Options are 'structural',
+            'functional', 'weighted', and 'alternating'.
+        weight (float): Weight assigned to SMI in the combined score
+            for weighted ranking. The FMI weight is 1 - weight.
+        ties (str): Tie-breaking criterion for structural and weighted
+            ranking. Options are 'isolated', 'connected', and
+            'functional'.
+        info (dict): Dictionary containing node metadata, including
+            'names' and 'types'.
+        n (int): Maximum number of top-ranked interactions to return.
 
     Returns:
-        pd.DataFrame: DataFrame con las interacciones ordenadas.
+        pd.DataFrame: DataFrame containing the top-ranked interactions
+        with columns 'Node1', 'Node2', 'Type1', 'Type2', 'SMI', and
+        'FMI'.
     """
+    
     n_nodes = smi.shape[0]
-    # Calcular grado de nodos (para desempates)
     row_counts = np.count_nonzero(smi, axis=1)
     col_counts = np.count_nonzero(smi, axis=0)
     degrees = row_counts + col_counts
 
-    # Construir lista de interacciones con nombres y tipos
     interactions = []
     for i in range(n_nodes):
         for j in range(n_nodes):
@@ -198,7 +243,6 @@ def get_interactions(smi, fmi, mode, weight, ties, info, n):
                     "DegreeSum": vecinos
                 })
 
-    # ---------- ORDEN SEGÚN MODO ----------
     if mode == 'structural':
         if ties == 'isolated':
             interactions.sort(key=lambda x: (-x["SMI"], x["DegreeSum"]))
@@ -223,7 +267,6 @@ def get_interactions(smi, fmi, mode, weight, ties, info, n):
             interactions.sort(key=lambda x: (-x["WeightedScore"], -x["FMI"]))
 
     elif mode == 'alternating':
-        # Orden por SMI
         if ties == 'isolated':
             smi_sorted = sorted(interactions, key=lambda x: (-x["SMI"], x["DegreeSum"]))
         elif ties == 'connected':
@@ -232,10 +275,8 @@ def get_interactions(smi, fmi, mode, weight, ties, info, n):
             smi_sorted = sorted(interactions, key=lambda x: (-x["SMI"], -x["FMI"]))
         else:
             raise ValueError("Opción 'ties' no válida.")
-        # Orden por FMI
         fmi_sorted = sorted(interactions, key=lambda x: -x["FMI"])
 
-        # Alternar listas eliminando duplicados
         combined_sorted = []
         seen = set()
         for smi_item, fmi_item in zip(smi_sorted, fmi_sorted):
@@ -254,5 +295,4 @@ def get_interactions(smi, fmi, mode, weight, ties, info, n):
         if "WeightedScore" in inter:
             del inter["WeightedScore"]
 
-    # Retornar solo las primeras n interacciones
     return pd.DataFrame(interactions[:n])

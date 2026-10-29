@@ -14,11 +14,30 @@ def compute_mutual_info(
     MIN_DOUBLE=4.9406564584124654e-324,
 ):
     """
-    Calcula la información mutua condicional asociada a un par de nodos,
-    utilizando KDE y una cuadrícula vectorizada.
+    Computes the conditional mutual information associated with a pair
+    of nodes using kernel density estimation (KDE) and numerical
+    integration over a vectorized grid.
 
-    X_train: ndarray de forma (n_muestras, n_variables)
-    y_train: ndarray de forma (n_muestras,)
+    Estimates the joint and marginal probability densities for each
+    class, calculates the mutual information integral, and combines the
+    results weighted by the class probabilities.
+
+    Args:
+        nodo0 (int): Index of the first variable.
+        nodo1 (int): Index of the second variable.
+        X_train (np.ndarray): Training data with shape
+            (n_samples, n_variables).
+        y_train (np.ndarray): Class labels with shape (n_samples,).
+        precision (int): Number of grid points per axis used for KDE
+            evaluation and numerical integration.
+        MIN_DOUBLE (float, optional): Minimum positive floating-point
+            value used to avoid numerical zeros. The function resets
+            this parameter to the smallest positive normalized
+            float64 value. Defaults to 4.9406564584124654e-324.
+
+    Returns:
+        tuple: A tuple containing the first node index, the second node
+        index, and the computed conditional mutual information value.
     """
 
     # Evitar valores numéricos exactamente iguales a cero.
@@ -106,22 +125,35 @@ def FMI2(
     inner_max_num_threads=1,
 ):
     """
-    Calcula la matriz de información funcional mediante KDE paralelizada.
+    Computes the functional mutual information matrix using parallelized
+    kernel density estimation (KDE).
 
-    Parámetros
-    ----------
-    X_train : pandas.DataFrame o ndarray
-        Datos de entrenamiento.
-    y_train : pandas.Series o ndarray
-        Etiquetas de clase.
-    structural_information : ndarray
-        Matriz que determina las conexiones que deben procesarse.
-    precision : int
-        Número de puntos por eje de la cuadrícula KDE.
-    n_jobs : int
-        Número de trabajos de joblib. Usa 1, 2, 4 o -1.
-    inner_max_num_threads : int o None
-        Límite de hilos internos de BLAS/OpenMP para trabajadores loky.
+    Calculates mutual information for the variable pairs specified by the
+    structural information matrix, distributing computations across
+    multiple workers when parallelization is enabled.
+
+    Args:
+        X_train (pd.DataFrame or np.ndarray): Training data, with samples
+            as rows and features as columns.
+        y_train (pd.Series or np.ndarray): Class labels for the training
+            samples.
+        structural_information (np.ndarray): Matrix indicating the
+            variable pairs for which mutual information should be
+            computed.
+        precision (int): Number of grid points per axis used in KDE.
+            Must be at least 2.
+        n_jobs (int, optional): Number of parallel jobs to run. Use -1
+            to use all available processors or 1 to disable parallel
+            execution. Defaults to -1.
+        inner_max_num_threads (int or None, optional): Maximum number
+            of internal BLAS/OpenMP threads per worker when using the
+            'loky' backend. Defaults to 1.
+
+    Returns:
+        np.ndarray: Functional mutual information matrix containing the
+        computed values for the variable pairs specified by
+        structural_information. Entries for pairs not selected remain
+        zero.
     """
 
     # Convertir los datos a NumPy una sola vez.

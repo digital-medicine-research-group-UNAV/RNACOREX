@@ -41,16 +41,16 @@ def learn_LGBN(dataset, classpl, dag, fmi, smi, info):
 
     pdf = np.zeros((m,k))
 
-    # Para cada clase
+    # For each class
 
     for c in range(0,k):
             
-        # Calcular la probabilidad a priori.
+        # Calculate a priori probability.
 
         classp[c] = np.sum(classpl[:,c], axis=0)
         classp[c] /= m
 
-        # Estimar los parámetros.
+        # Estimate parameters.
 
         variance, betas, cmat = clg_param_continuous(classpl[:,c], dataset, dag)
 
@@ -60,7 +60,7 @@ def learn_LGBN(dataset, classpl, dag, fmi, smi, info):
 
         covmat[:, :, c] = cmat
 
-        # Obtener probabilidades de cada muestra para cada clase.
+        # Obtain probabilities for each sample by class.
 
         pdf[:,c] = pdf_lgbn(dataset,beta[:,:,c], sigma[:,c], dag)
 
@@ -140,36 +140,36 @@ def clg_param_continuous(classes, dataset, dag):
     covmat = np.zeros((n,n))
     betamat = np.zeros((n,n))
 
-    # Para cada nodo se calcula su valor de expresión medio en la clase (mu), la diferencia de cada valor de expresión con el valor medio de ese nodo (diffvar) y la diagonal de la matriz de covarianza (covmat).
+    # For each node, computes its mean expression value within the class (mu), the difference between each expression value and the node's mean (diffvar), and the diagonal of the covariance matrix (covmat).
 
     for i in range(0,n):
         mu[0,i] = np.sum(classes*dataset.iloc[:,i]) / N
         diffvar[:,i] = dataset.iloc[:,i] - mu[0][i]
         covmat[i,i] = np.sum(classes*diffvar[:,i]*diffvar[:,i]) / N 
 
-    # Se añaden a la matriz de covarianza los elementos que no están en la diagonal.
+    # Add the off-diagonal elements to the covariance matrix.
 
     for i in range(0,n):
         for j in range(0,n):
             if i != j:
                 covmat[i,j] = np.sum(classes*diffvar[:,i]*diffvar[:,j]) / N
 
-    # Se calculan los parámetros del modelo para cada nodo.
+    # Compute the model parameters for each node.
 
     for i in range(0,n):
 
-        # Se seleccionan los padres del nodo i.
+        # Select the parents of node i.
 
         pa = np.where(dag[:, i] == 1)[0]
         npa = len(pa)
 
-        # Si no tiene padres, es un miRNA, la media es el valor medio de expresión del nodo y la varianza es la de la diagonal de la matriz de covarianza.
+        # If the node has no parents, it is an miRNA. The mean is the node's mean expression value, and the variance is the corresponding diagonal element of the covariance matrix.
 
         if npa == 0:
             betamat[i,i] = mu[0][i]
             variance[0][i] = covmat[i,i]
 
-        # Si tiene padres, se calculan los parámetros del modelo. Este sería el caso de los mRNA.
+        # If the node has parents, compute the model parameters. This corresponds to the mRNA case.
 
         else:
 

@@ -11,65 +11,99 @@ import time
 
 
 def learn_SLGBN(X, filtered_dag, classes, info, filtered_fmi, filtered_smi, G):
+    """
+    Learns the parameters of a Structural Learning Bayesian Network (SLGBN)
+    for each class and evaluates its log-likelihood.
 
+    Computes the network structure, estimates class-specific parameters,
+    calculates class prior probabilities and individual likelihoods, and
+    evaluates the total log-likelihood. Stores the learned parameters,
+    network structure, metadata, and evaluation results in a dictionary.
+
+    Args:
+        X (pd.DataFrame): Gene expression dataset.
+        filtered_dag (np.ndarray): Filtered directed acyclic graph adjacency matrix.
+        classes (np.ndarray): One-hot encoded class labels for each individual.
+        info (dict): Dictionary containing node metadata, including labels,
+            types, and names.
+        filtered_fmi (np.ndarray): Filtered Functional Mutual Information matrix.
+        filtered_smi (np.ndarray): Filtered Structural Mutual Information matrix.
+        G (nx.Graph): NetworkX graph representing the network structure.
+
+    Returns:
+        dict: Dictionary containing the learned class priors, model parameters,
+            standard deviations, network structure, node metadata, mutual
+            information matrices, log-likelihood, and updated graph.
+    """
     SLGBN_structure = structure_SLGBN(X, filtered_dag, info)
 
     final_G = SLGBN_structure[0]
     node_types = SLGBN_structure[1]
     node_types_list = list(node_types.values())
 
-    # Se aprenden los parametros de la red por clase.
-
+    # Learn the network parameters for each class.
     params = parameters_SLGBN(X, classes, final_G, node_types)
-
-    # Params es un diccionario donde k
 
     k = classes.shape[1]
     m = X.shape[0]
 
-    sigma = np.array([[params[c][node]['sigma'] for c in range(k)] for node in params[0]])
+    sigma = np.array([
+        [params[c][node]['sigma'] for c in range(k)]
+        for node in params[0]
+    ])
 
     classp = np.zeros(k)
 
-    for c in range(0,k):
-        classp[c] = np.sum(classes[:,c], axis=0)
+    for c in range(0, k):
+        classp[c] = np.sum(classes[:, c], axis=0)
         classp[c] /= m
 
-    # classp = Prior de la clase, es decir, P(C=c) para cada clase c.
+    # Compute the class prior probabilities P(C=c) for each class c.
 
-     # 4. P(X | clase)
+    # Compute P(X | class).
     pdf = np.zeros((m, k))
 
     for c in range(k):
-
-        # Calcula la probabilidad de cada individuo dado los parámetros de la clase c y la estructura final del grafo.
-
+        # Compute the probability of each individual given the parameters
+        # of class c and the final network structure.
         pdf[:, c] = pdf_slgbn(
             X,
             params[c],
             final_G
         )
 
-    # Multiplica la probabilidad por el prior de la clase.
-
+    # Multiply the likelihoods by the corresponding class prior probabilities.
     posterior_unnormalized = pdf * classp[np.newaxis, :]
 
-    # Nos quedamos con la clase real
-
+    # Retain the probabilities corresponding to the true class of each individual.
     prob_ll = classes * posterior_unnormalized
 
-    # Para quedarse con solo la clase real, se suman las probabilidades de cada clase para cada individuo. Como solo tendrá valor la clase real, nos quedamos con esa.
-
+    # Sum the probabilities across classes for each individual.
+    # Since only the true class contributes, this retains its probability.
     sumprob = np.sum(prob_ll, axis=1)
 
-    # Se suman los logaritmos de las probabilidades de cada individuo para obtener el log-likelihood total.
-
+    # Sum the log-probabilities of all individuals to obtain the total log-likelihood.
     ll = np.sum(np.log(np.clip(sumprob, 1e-300, None)))
 
-    clgc = {"classp":classp,"params": params,"beta":None,"sigma":sigma,"covmat":None,"dag":filtered_dag,"labels":info["labels"],"types":info["types"],"distribution": node_types_list,"names":info["names"],"fmi":filtered_fmi,"smi":filtered_smi,"ll":ll,"acc":None,"bic":None}
+    clgc = {
+        "classp": classp,
+        "params": params,
+        "beta": None,
+        "sigma": sigma,
+        "covmat": None,
+        "dag": filtered_dag,
+        "labels": info["labels"],
+        "types": info["types"],
+        "distribution": node_types_list,
+        "names": info["names"],
+        "fmi": filtered_fmi,
+        "smi": filtered_smi,
+        "ll": ll,
+        "acc": None,
+        "bic": None
+    }
 
-    # Se añade al grafo el tipo de los nodos
-
+    # Add the node types as attributes to the graph.
     label_to_name = dict(zip(info['labels'], info['names']))
 
     node_types_graph = {
@@ -437,9 +471,31 @@ def can_change_type(node, tabu, type_change, n_parents):
 
 def structure_SLGBN(X, dag, info):
 
-    G_0 = nx.MultiDiGraph()
+    """
+    Learns the structure and node types of a Structural Learning Bayesian
+    Network (SLGBN) using an iterative optimization procedure.
 
-    # Aqui se podría usar el get_network() de CLGStructure
+    Initializes a directed graph from the input adjacency matrix and
+    iteratively evaluates changes to node types, selecting the changes
+    that maximize the chosen score. Uses tabu search and a patience
+    criterion to control the optimization process.
+
+    Args:
+        X (pd.DataFrame): Gene expression dataset, with samples as rows
+            and node identifiers as columns.
+        dag (np.ndarray): Adjacency matrix representing the initial
+            directed acyclic graph.
+        info (dict): Dictionary containing node metadata, including
+            the 'labels' key with the ordered node identifiers.
+
+    Returns:
+        tuple: A tuple containing:
+            - nx.MultiDiGraph: The optimized network structure.
+            - dict: The final node types.
+            - dict: The estimated parameters for the final network.
+    """
+
+    G_0 = nx.MultiDiGraph()
 
     for i, node in enumerate(info["labels"]):
         G_0.add_node(node)
@@ -552,6 +608,25 @@ def structure_SLGBN(X, dag, info):
 
 def parameters_SLGBN(X, classes, G, node_types):
 
+    """
+    Estimates the parameters of a Structural Learning Bayesian Network
+    (SLGBN) separately for each class.
+
+    Selects the samples belonging to each class and estimates the
+    network parameters using the given graph structure and node types.
+
+    Args:
+        X (pd.DataFrame or np.ndarray): Gene expression dataset, with
+            samples as rows and nodes as columns.
+        classes (np.ndarray): One-hot encoded class labels for each sample.
+        G (nx.MultiDiGraph): Network structure.
+        node_types (dict): Dictionary mapping each node to its type.
+
+    Returns:
+        dict: Dictionary mapping each class index to its estimated
+            network parameters.
+    """
+
     n_bases = 6
     penalization = 0.5
 
@@ -561,7 +636,6 @@ def parameters_SLGBN(X, classes, G, node_types):
 
     for c in range(n_classes):
 
-        # Filas pertenecientes a la clase c
         mask = classes[:, c] == 1
 
         X_class = X.loc[mask] if hasattr(X, "loc") else X[mask]
@@ -579,6 +653,29 @@ def parameters_SLGBN(X, classes, G, node_types):
 
 
 def pdf_slgbn(data, class_params, dag):
+
+    """
+    Computes the likelihood of each sample given the parameters and
+    structure of a Structural Learning Bayesian Network (SLGBN).
+
+    Converts the network structure to an adjacency matrix if necessary
+    and computes the conditional probability density of each node given
+    its parents. Supports linear and nonlinear models and combines the
+    node-wise probability densities to obtain the likelihood of each sample.
+
+    Args:
+        data (pd.DataFrame): Gene expression dataset, with samples as rows
+            and nodes as columns.
+        class_params (dict): Dictionary containing the estimated parameters
+            for each node, including regression coefficients or nonlinear
+            models, variance parameters, and node types.
+        dag (nx.DiGraph, nx.MultiDiGraph, or np.ndarray): Network structure,
+            represented as a directed graph or an adjacency matrix.
+
+    Returns:
+        np.ndarray: Array containing the joint likelihood of each sample
+            given the network structure and model parameters.
+    """
 
     m = data.shape[0]
 

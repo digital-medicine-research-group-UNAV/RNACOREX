@@ -8,7 +8,34 @@ from pybnesian import (SemiparametricBN, GreedyHillClimbing,
 
 
 def learn_SPBN(X, filtered_dag, classes, info, filtered_fmi, filtered_smi, G):
-    
+    """
+    Learns a Structural Probabilistic Bayesian Network (SPBN) and evaluates
+    its total log-likelihood.
+
+    Constructs the network structure, estimates class-specific parameters,
+    computes class prior probabilities and sample log-likelihoods, and
+    identifies the conditional probability distribution associated with
+    each node. Stores the model parameters, network metadata, evaluation
+    results, and updated graph in a dictionary.
+
+    Args:
+        X (pd.DataFrame): Gene expression dataset, with samples as rows
+            and node identifiers as columns.
+        filtered_dag (np.ndarray): Filtered adjacency matrix representing
+            the network structure.
+        classes (np.ndarray): One-hot encoded class labels for each sample.
+        info (dict): Dictionary containing node metadata, including
+            labels, types, and names.
+        filtered_fmi (np.ndarray): Filtered Functional Mutual Information matrix.
+        filtered_smi (np.ndarray): Filtered Structural Mutual Information matrix.
+        G (nx.Graph): NetworkX graph representing the network structure.
+
+    Returns:
+        dict: Dictionary containing class prior probabilities, estimated
+            parameters, network structure, node metadata, distribution
+            types, mutual information matrices, total log-likelihood,
+            and the updated graph.
+    """
     model = structure_SPBN(X, filtered_dag, info)
 
     params = parameters_SPBN(X, classes, model)
@@ -16,30 +43,19 @@ def learn_SPBN(X, filtered_dag, classes, info, filtered_fmi, filtered_smi, G):
     k = classes.shape[1]
     m = X.shape[0]
 
-    # sigma = np.array([[params[c][node]['sigma'] for c in range(k)] for node in params[0]])
-
     classp = np.zeros(k)
 
-    for c in range(0,k):
-        classp[c] = np.sum(classes[:,c], axis=0)
+    for c in range(0, k):
+        classp[c] = np.sum(classes[:, c], axis=0)
         classp[c] /= m
-
-    # classp representa el prior de la clase, es decir, P(C=c) para cada clase c.
 
     logpdf = np.zeros((m, k))
 
-    # Se calcula la probabilidad de cada individuo dado los parámetros de la clase c.
-
     for c in range(k):
-
         logpdf[:, c] = logpdf_spbn(
             X,
             params[c]
         )
-
-    # --------------------------------------------------
-    # log P(C=c) + log P(X | C=c)
-    # --------------------------------------------------
 
     log_prior = np.log(
         np.clip(classp, 1e-300, None)
@@ -50,27 +66,32 @@ def learn_SPBN(X, filtered_dag, classes, info, filtered_fmi, filtered_smi, G):
         log_prior[np.newaxis, :]
     )
 
-    # --------------------------------------------------
-    # Seleccionar la clase real de cada muestra
-    # --------------------------------------------------
-
-    # classes tiene un 1 en la clase real
     log_prob_real_class = classes * log_joint
 
-    # Para cada muestra queda únicamente
-    # log P(X_i, C_i)
     log_prob_real_class = np.sum(
         log_prob_real_class,
         axis=1
     )
 
-    # --------------------------------------------------
-    # Log-Likelihood total
-    # --------------------------------------------------
-
     ll = np.sum(log_prob_real_class)
 
-    clgc = {"classp":classp,"params": params,"beta":None,"sigma":None,"covmat":None,"dag":filtered_dag,"labels":info["labels"],"types":info["types"],"distribution":None,"names":info["names"],"fmi":filtered_fmi,"smi":filtered_smi,"ll":ll,"acc":None,"bic":None}
+    clgc = {
+        "classp": classp,
+        "params": params,
+        "beta": None,
+        "sigma": None,
+        "covmat": None,
+        "dag": filtered_dag,
+        "labels": info["labels"],
+        "types": info["types"],
+        "distribution": None,
+        "names": info["names"],
+        "fmi": filtered_fmi,
+        "smi": filtered_smi,
+        "ll": ll,
+        "acc": None,
+        "bic": None
+    }
 
     node_types = {}
 
@@ -104,11 +125,29 @@ def learn_SPBN(X, filtered_dag, classes, info, filtered_fmi, filtered_smi, G):
 
 def structure_SPBN(X, filtered_dag, info):
 
+    """
+    Learns the structure of a Semiparametric Bayesian Network (SPBN)
+    using a greedy hill-climbing algorithm.
+
+    Initializes the network with the provided adjacency matrix, assigns
+    a linear Gaussian conditional probability distribution to each node,
+    and optimizes the network by evaluating node type changes using
+    a validated likelihood score.
+
+    Args:
+        X (pd.DataFrame): Gene expression dataset, with samples as rows
+            and node identifiers as columns.
+        filtered_dag (np.ndarray): Adjacency matrix defining the initial
+            network structure.
+        info (dict): Dictionary containing node metadata.
+
+    Returns:
+        SemiparametricBN: The learned Bayesian network model.
+    """
+
     from pybnesian import (SemiparametricBN, GreedyHillClimbing, 
                        OperatorPool, ChangeNodeTypeSet,
                        ValidatedLikelihood, LinearGaussianCPDType, ArcOperatorSet)
-
-    # Hay que darle de entrada la estructura inicial.
 
     hc = GreedyHillClimbing()
 
@@ -134,11 +173,30 @@ def structure_SPBN(X, filtered_dag, info):
 
 def parameters_SPBN(X, classes, model):
 
+    """
+    Estimates the parameters of a Semiparametric Bayesian Network (SPBN)
+    separately for each class.
+
+    Selects the samples belonging to each class, creates a copy of the
+    network model, and fits the model to the corresponding class-specific
+    data. The network structure is shared across classes, while the
+    parameters are estimated independently for each class.
+
+    Args:
+        X (pd.DataFrame): Gene expression dataset, with samples as rows
+            and node identifiers as columns.
+        classes (np.ndarray): One-hot encoded class labels for each sample.
+        model (SemiparametricBN): Initialized Bayesian network structure
+            to be fitted separately for each class.
+
+    Returns:
+        dict: Dictionary mapping each class index to its fitted
+            Semiparametric Bayesian Network model.
+    """
+
     from pybnesian import (SemiparametricBN, GreedyHillClimbing, 
                        OperatorPool, ChangeNodeTypeSet,
                        ValidatedLikelihood, LinearGaussianCPDType, ArcOperatorSet)
-
-    # Hay que darle de entrada la estructura inicial.
 
     priors = {}
 
@@ -158,13 +216,29 @@ def parameters_SPBN(X, classes, model):
 
         models[c] = model_c
 
-    # Models incluye un modelo por clase. La estructura es común y los parámetros se aprenden por clase. 
-
     return models
 
 
 
 def logpdf_spbn(data, class_params):
+
+    """
+    Computes the log-likelihood of each sample given a fitted
+    Semiparametric Bayesian Network (SPBN).
+
+    Evaluates the log-likelihood of each individual sample using the
+    fitted model and returns the resulting scores as a NumPy array.
+
+    Args:
+        data (pd.DataFrame): Dataset containing the samples to evaluate,
+            with samples as rows and nodes as columns.
+        class_params (SemiparametricBN): Fitted Bayesian network model
+            containing the parameters for a specific class.
+
+    Returns:
+        np.ndarray: One-dimensional array containing the log-likelihood
+            of each sample under the specified model.
+    """
 
     scores = []
 

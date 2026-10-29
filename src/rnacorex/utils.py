@@ -11,7 +11,9 @@ FILE_IDS = {
 
 
 def check_engines():
+
     """Check whether all required engine files are present."""
+
     missing_files = [
         filename
         for filename in FILE_IDS
@@ -28,7 +30,9 @@ def check_engines():
 
 
 def download():
+
     """Download missing engine files."""
+
     ENGINES_DIR.mkdir(parents=True, exist_ok=True)
 
     for filename, file_id in FILE_IDS.items():
@@ -57,7 +61,9 @@ def download():
         print(f"✓ Saved default engine")
 
 def ensure_engines():
+
     """Download missing engines automatically."""
+    
     if not check_engines():
         download()
 

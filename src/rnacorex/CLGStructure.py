@@ -12,7 +12,27 @@ from .models.LGBN import learn_LGBN
 
 def fit_model(X, y, smi, fmi, n_con, ranking, model, info):
 
-    # Construir DAG a partir del ranking ya calculado
+    """
+    Fits a probabilistic network model using a ranked set of interactions.
+
+    Builds a directed acyclic graph (DAG) from the interaction ranking,
+    filters the graph and associated data, and fits the specified model.
+
+    Args:
+        X (np.ndarray): Input feature matrix.
+        y (np.ndarray): Target variable containing the class labels.
+        smi (np.ndarray): Structure Mutual Information matrix.
+        fmi (np.ndarray): Function Mutual Information matrix.
+        n_con (int): Number of connections to include in the network.
+        ranking (list): Ranked list of candidate interactions.
+        model (str): Model to fit ('LGBN', 'SLGBN', or 'SPBN').
+        info (dict): Dictionary containing node information, including
+            names and types.
+
+    Returns:
+        dict: Fitted model containing the learned network parameters and
+        associated metadata.
+    """
 
     binary_matrix, coordinates = build_dag_from_ranking(
         ranking,
@@ -21,7 +41,6 @@ def fit_model(X, y, smi, fmi, n_con, ranking, model, info):
         n_con
     )
 
-    # Filtrar DAG, datos, etc.
     filtered_dag, filtered_fmi, filtered_smi, info, X, classes = filter_dag(
         X,
         y,
@@ -81,17 +100,32 @@ def fit_model(X, y, smi, fmi, n_con, ranking, model, info):
 
 def build_ranking(smi, fmi, mode='alternating', weight=0.5, ties='isolated'):
     """
-    Construye el ranking completo de interacciones según SMI/FMI.
+    Builds a complete ranking of interactions based on structural and
+    functional mutual information scores.
 
-    Returns
-    -------
-    ranking : list
-        Lista de interacciones ordenadas según el criterio seleccionado.
-        Cada elemento tiene:
-        [i, j, s, f, vecinos]
+    Identifies all interactions present in either the SMI or FMI matrix
+    and ranks them according to the selected mode and tie-breaking
+    criterion.
+
+    Args:
+        smi (np.ndarray): Structural Mutual Information matrix.
+        fmi (np.ndarray): Functional Mutual Information matrix.
+        mode (str, optional): Ranking strategy. Options are 'structural',
+            'functional', 'weighted', and 'alternating'. Defaults to
+            'alternating'.
+        weight (float, optional): Weight assigned to SMI in the combined
+            score for weighted ranking. The FMI weight is calculated as
+            1 - weight. Defaults to 0.5.
+        ties (str, optional): Tie-breaking criterion for structural and
+            weighted ranking. Options are 'isolated', 'connected', and
+            'functional'. Defaults to 'isolated'.
+
+    Returns:
+        list: Ranked interactions, where each element contains the row
+        index, column index, SMI score, FMI score, and combined degree
+        of the connected nodes, in the format
+        [i, j, s, f, neighbors].
     """
-
-    n_rows, n_cols = smi.shape
 
     # Conectividad de los nodos
     row_counts = np.count_nonzero(smi, axis=1)
@@ -213,7 +247,26 @@ def build_ranking(smi, fmi, mode='alternating', weight=0.5, ties='isolated'):
 
 def build_dag_from_ranking(ranking, n_rows, n_cols, n_con):
     """
-    Builds DAG with a previously calculated ranking.
+    Builds a directed acyclic graph (DAG) representation from a ranked
+    list of interactions.
+
+    Selects the top-ranked interactions up to the specified limit and
+    creates a binary adjacency matrix and a list of selected coordinates.
+
+    Args:
+        ranking (list): Ranked interactions, where each element contains
+            the row index, column index, SMI score, FMI score, and
+            combined degree of the connected nodes.
+        n_rows (int): Number of rows in the adjacency matrix.
+        n_cols (int): Number of columns in the adjacency matrix.
+        n_con (int): Maximum number of top-ranked interactions to select.
+
+    Returns:
+        tuple: A tuple containing:
+            - np.ndarray: Binary matrix representing the selected
+              interactions.
+            - list: Coordinates of the selected interactions, with each
+              element represented as [i, j].
     """
 
     selected = ranking[:n_con]
@@ -235,10 +288,40 @@ def build_dag_from_ranking(ranking, n_rows, n_cols, n_con):
 
 def filter_dag(X, y, smi, fmi, dag, coordinates, info):
 
+    """
+    Filters the DAG, mutual information matrices, metadata, and expression
+    data to retain only the nodes involved in the selected interactions.
+
+    Extracts the unique node indices from the interaction coordinates,
+    filters the corresponding matrices and metadata, selects the relevant
+    features from the input data, and encodes the target labels using
+    one-hot encoding.
+
+    Args:
+        X (pd.DataFrame): Input expression data, with feature names as
+            index labels or column identifiers accessible through
+            info['labels'].
+        y (np.ndarray or list): Target class labels.
+        smi (np.ndarray): Structural Mutual Information matrix.
+        fmi (np.ndarray): Functional Mutual Information matrix.
+        dag (np.ndarray): Adjacency matrix representing the DAG.
+        coordinates (list): Coordinates of selected interactions, with
+            each element represented as [i, j].
+        info (dict): Dictionary containing node metadata, including
+            'labels', 'types', and 'names'.
+
+    Returns:
+        tuple: A tuple containing:
+            - np.ndarray: Filtered DAG adjacency matrix.
+            - np.ndarray: Filtered FMI matrix.
+            - np.ndarray: Filtered SMI matrix.
+            - dict: Updated metadata containing only the selected nodes.
+            - pd.DataFrame or np.ndarray: Filtered expression data.
+            - np.ndarray: One-hot encoded target class labels.
+    """
+
     # Filter DAG
 
-    # flattened = [item for sublist in coordinates for item in sublist]
-    # flattened = np.unique(flattened)
     flattened = np.array([item for sublist in coordinates for item in sublist])
     flattened = np.unique(flattened).astype(int)
     filtered_dag = dag[np.ix_(flattened, flattened)]
@@ -265,6 +348,29 @@ def filter_dag(X, y, smi, fmi, dag, coordinates, info):
 
 
 def get_network(info, filtered_dag):
+
+    """
+    Constructs a directed network from a filtered adjacency matrix and
+    removes cycles using a greedy heuristic.
+
+    Creates a directed multigraph with nodes colored according to their
+    types, adds edges based on the adjacency matrix, and iteratively
+    removes edges from detected cycles by selecting the edge whose target
+    node has the highest total degree. The corresponding entries in the
+    adjacency matrix are updated accordingly.
+
+    Args:
+        info (dict): Dictionary containing node metadata, including
+            'names' and 'types'.
+        filtered_dag (np.ndarray): Binary adjacency matrix representing
+            the filtered directed graph.
+
+    Returns:
+        tuple: A tuple containing:
+            - np.ndarray: Updated adjacency matrix after cycle removal.
+            - nx.MultiDiGraph: Directed multigraph with typed node colors
+              and no remaining directed cycles.
+    """
 
     G = nx.MultiDiGraph()
 
