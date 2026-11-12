@@ -2,8 +2,8 @@ import pandas as pd
 import rnacorex
 from rnacorex import RNACOREX
 
-data_train = pd.read_csv(f"../GPB/Data/train_brca_lognorm.csv", index_col=0)
-data_test = pd.read_csv(f"../GPB/Data/test_brca_lognorm.csv", index_col=0)
+data_train = pd.read_csv(f"../GigaScience/Data/train_brca_lognorm.csv", index_col=0)
+data_test = pd.read_csv(f"../GigaScience/Data/test_brca_lognorm.csv", index_col=0)
 
 X_train = data_train.drop("Class", axis=1)
 y_train = data_train["Class"]

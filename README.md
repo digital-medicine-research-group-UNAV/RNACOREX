@@ -35,7 +35,7 @@ rnacorex.check_engines()
 
 ## ⚡ Quick Start
 
-Run the `quickstart.py` script and `Quick_Start.ipynb` notebook in `quickstart` folder for easy applications of RNACOREX. Find data in `GPB/Data/` folder.
+Run the `quickstart.py` script and `Quick_Start.ipynb` notebook in `quickstart` folder for easy applications of RNACOREX. Find data in `GigaScience/Data/` folder.
 
 ```python
 from rnacorex import RNACOREX
